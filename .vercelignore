@@ -1,0 +1,35 @@
+# Development files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Database files
+database/
+scripts/
+
+# Development tools
+.eslintrc*
+.prettierrc*
+husky/
+.vscode/
+.idea/
+
+# Test files
+__tests__/
+*.test.*
+*.spec.*
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/

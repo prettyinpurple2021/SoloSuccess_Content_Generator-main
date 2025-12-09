@@ -1,0 +1,271 @@
+/* Holographic Glassmorphic Theme */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
+
+:root {
+  /* Rainbow Gradient Colors */
+  --rainbow-gradient: linear-gradient(
+    45deg,
+    #ff0080,
+    #ff8c00,
+    #ffd700,
+    #00ff80,
+    #00bfff,
+    #8000ff,
+    #ff0080
+  );
+  --rainbow-gradient-vertical: linear-gradient(
+    180deg,
+    #ff0080,
+    #ff8c00,
+    #ffd700,
+    #00ff80,
+    #00bfff,
+    #8000ff,
+    #ff0080
+  );
+  --rainbow-gradient-radial: radial-gradient(
+    circle,
+    #ff0080,
+    #ff8c00,
+    #ffd700,
+    #00ff80,
+    #00bfff,
+    #8000ff,
+    #ff0080
+  );
+
+  /* Holographic Colors */
+  --holo-pink: #ff69b4;
+  --holo-purple: #da70d6;
+  --holo-cyan: #00ffff;
+  --holo-gold: #ffd700;
+  --holo-silver: #c0c0c0;
+
+  /* Glass Effects */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass-backdrop: blur(20px);
+
+  /* 3D Effects */
+  --shadow-3d:
+    0 10px 30px rgba(255, 105, 180, 0.3), 0 20px 60px rgba(138, 43, 226, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  --shadow-3d-hover:
+    0 15px 40px rgba(255, 105, 180, 0.4), 0 25px 70px rgba(138, 43, 226, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Default fallback */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 191, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a1a 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: white;
+}
+
+/* Theme Modes */
+body.theme-holographic {
+  font-family: 'Space Grotesk', sans-serif;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 0, 128, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 191, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+    linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a1a 100%);
+  color: white;
+}
+
+body.theme-dark {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  color: #e5e5e5;
+}
+
+body.theme-light {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  color: #1a202c;
+}
+
+@layer components {
+  /* For vibrant, animated gradient text */
+  .holo-text {
+    @apply font-bold text-transparent bg-clip-text animate-rainbow-shift;
+    background-image: var(--rainbow-gradient);
+    background-size: 400% 400%;
+    text-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+  }
+
+  /* Your primary button style with hover effects */
+  .holo-button {
+    @apply relative overflow-hidden rounded-[15px] border-none px-6 py-3 font-semibold text-white cursor-pointer transition-all duration-300 ease-in-out animate-rainbow-shift;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 0, 128, 0.8),
+      rgba(255, 140, 0, 0.8),
+      rgba(255, 215, 0, 0.8),
+      rgba(0, 255, 128, 0.8),
+      rgba(0, 191, 255, 0.8),
+      rgba(128, 0, 255, 0.8)
+    );
+    background-size: 400% 400%;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+  }
+
+  .holo-button:hover {
+    @apply -translate-y-px scale-105;
+    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.5);
+  }
+
+  /* Creates the swipe-to-shine effect on hover */
+  .holo-button::before {
+    content: '';
+    @apply absolute top-0 w-full h-full transition-all duration-500;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    left: -100%;
+  }
+
+  .holo-button:hover::before {
+    left: 100%;
+  }
+
+  /* A stylized input field with a holographic border on focus */
+  .holo-input {
+    @apply w-full rounded-xl border-2 border-transparent bg-white/10 py-3 px-4 text-white backdrop-blur-[10px] transition-all duration-300 ease-in-out placeholder:text-white/60;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)),
+      linear-gradient(45deg, #ff0080, #ff8c00, #ffd700, #00ff80, #00bfff, #8000ff);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .holo-input:focus {
+    @apply outline-none;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+  }
+}
+
+/* Sparkle Animation */
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes rainbow-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes holographic {
+  0% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    background-position: 100% 50%;
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    background-position: 0% 100%;
+    filter: hue-rotate(270deg);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(255, 105, 180, 0.5),
+      0 0 40px rgba(255, 105, 180, 0.3),
+      0 0 60px rgba(255, 105, 180, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 30px rgba(255, 105, 180, 0.8),
+      0 0 60px rgba(255, 105, 180, 0.5),
+      0 0 90px rgba(255, 105, 180, 0.3);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Glassmorphic Base Classes */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: var(--shadow-3d);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--shadow-3d-hover);
+  border-color: rgba(255, 105, 180, 0.4);
+}
+
+/* Other custom classes */
+/* You can continue to add your .holo-text, .holo-button, etc. here */
+/* ... */

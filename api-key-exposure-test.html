@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Key Exposure Test</title>
+</head>
+<body>
+    <h1>API Key Exposure Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        // Test what environment variables are accessible
+        const envVars = [
+            'GEMINI_API_KEY',
+            'API_KEY',
+            'DATABASE_URL',
+            'STACK_SECRET_SERVER_KEY',
+            'INTEGRATION_ENCRYPTION_SECRET',
+            'VITE_STACK_PROJECT_ID',
+            'VITE_STACK_PUBLISHABLE_CLIENT_KEY'
+        ];
+        
+        let exposedVars = [];
+        
+        envVars.forEach(varName => {
+            // Check process.env
+            if (typeof process !== 'undefined' && process.env && process.env[varName]) {
+                exposedVars.push(`process.env.${varName}: ${process.env[varName].substring(0, 10)}...`);
+            }
+            
+            // Check import.meta.env
+            if (typeof import !== 'undefined' && import.meta && import.meta.env && import.meta.env[varName]) {
+                exposedVars.push(`import.meta.env.${varName}: ${import.meta.env[varName].substring(0, 10)}...`);
+            }
+        });
+        
+        if (exposedVars.length === 0) {
+            results.innerHTML = '<p style="color: green;">✅ No sensitive environment variables exposed to browser</p>';
+        } else {
+            results.innerHTML = '<p style="color: red;">❌ Exposed variables:</p><ul>' + 
+                exposedVars.map(v => `<li>${v}</li>`).join('') + '</ul>';
+        }
+        
+        // Also check global variables
+        const globalVars = Object.keys(window).filter(key => 
+            key.toLowerCase().includes('api') || 
+            key.toLowerCase().includes('secret') || 
+            key.toLowerCase().includes('key')
+        );
+        
+        if (globalVars.length > 0) {
+            results.innerHTML += '<p style="color: orange;">⚠️ Potentially sensitive global variables:</p><ul>' + 
+                globalVars.map(v => `<li>${v}</li>`).join('') + '</ul>';
+        }
+    </script>
+</body>
+</html>

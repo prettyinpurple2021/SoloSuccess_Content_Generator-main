@@ -1,0 +1,33 @@
+project:
+  tech_stack: [vite-react-ts, tailwindcss, framer-motion, neon]
+  ui:
+    enforce_tailwind: true
+    enforce_glassmorphic_gradient: true
+use_framer_motion: true
+component_dir: 'components'
+rules:
+  - Always style with Tailwind utility classes; never inline styles or CSS Modules
+  - Use Framer Motion for animations (prefer motion.* wrappers and variants)
+  - Maintain glassmorphic gradient background on all pages and major surfaces
+  - Do not introduce new UI libs without explicit approval
+  - Components must be function components with hooks; no class components
+  - Strict TypeScript: no any, no implicit any, no ts-ignore
+  - Services must validate inputs/outputs with Zod schemas
+  - No mocks/demos/placeholders. Implement real behavior
+  - Do not use supabase in the codebase
+  - Use neon for the database
+  - Use stack auth for the authentication
+  - Do not omit any features or functionality
+  - Do not comment out any code unless it is explicitly requested
+  - Keep integrations via `services/*`; do not call third-party APIs from components
+  - Tests required for new services and complex components
+  - Follow existing file naming conventions and folders
+  - Use the latest version of the libraries and dependencies
+  - Use the latest version of the tools and utilities
+  - Use the latest version of the frameworks and platforms
+  - Use the latest version of the languages and technologies
+  - Use the latest version of the best practices and patterns
+  - Use the latest version of the industry standards and guidelines
+  - Use the latest version of the security best practices and patterns
+  - Use the latest version of the performance best practices and patterns
+  - Use the latest version of the accessibility best practices and patterns

@@ -1,0 +1,113 @@
+name: CI
+permissions:
+  contents: read
+  security-events: write
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  secret-scanning:
+    name: Secret Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine BASE and HEAD commits
+        id: determine-commits
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            # For PRs, use the base branch as BASE and PR head as HEAD
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            # For pushes, use the previous commit as BASE and current commit as HEAD
+            if [ -n "${{ github.event.before }}" ] && [ "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]; then
+              BASE="${{ github.event.before }}"
+              HEAD="${{ github.event.after }}"
+            else
+              # First commit or no previous commit, scan from default branch
+              BASE="${{ github.event.repository.default_branch }}"
+              HEAD="${{ github.sha }}"
+            fi
+          fi
+          
+          # Check if BASE and HEAD are the same
+          if [ -n "$BASE" ] && [ "$BASE" == "$HEAD" ]; then
+            echo "⚠️ BASE and HEAD commits are the same. Skipping scan."
+            echo "skip=true" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          echo "BASE=$BASE" >> $GITHUB_OUTPUT
+          echo "HEAD=$HEAD" >> $GITHUB_OUTPUT
+          echo "skip=false" >> $GITHUB_OUTPUT
+
+      - name: Run TruffleHog
+        if: steps.determine-commits.outputs.skip != 'true'
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ steps.determine-commits.outputs.BASE }}
+          head: ${{ steps.determine-commits.outputs.HEAD }}
+          extra_args: --only-verified
+
+      - name: Skip scan notification
+        if: steps.determine-commits.outputs.skip == 'true'
+        run: |
+          echo "✅ Secret scanning skipped (no new commits to scan)"
+
+  build:
+    needs: secret-scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+        continue-on-error: true
+
+      - name: Tests (if present)
+        run: npm run -s test --if-present
+
+      - name: Build
+        run: npm run build
+
+  build-test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with env
+        run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL || 'https://example.supabase.co' }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY || 'anon' }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || 'dummy' }}
