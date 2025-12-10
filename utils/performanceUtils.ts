@@ -122,8 +122,10 @@ export function memoize<T extends (...args: any[]) => any>(
     // Limit cache size to prevent memory issues
     // Map maintains insertion order, so first key is least recently used
     if (cache.size >= maxCacheSize) {
-      const firstKey = cache.keys().next().value;
-      cache.delete(firstKey);
+      const firstIter = cache.keys().next();
+      if (!firstIter.done) {
+        cache.delete(firstIter.value);
+      }
     }
 
     cache.set(key, result);
@@ -173,7 +175,7 @@ export function groupBy<T>(array: T[], keyFn: (item: T) => string | number): Rec
     if (!groups[key]) {
       groups[key] = [];
     }
-    groups[key].push(item);
+    groups[key]!.push(item);
   }
 
   return groups;
@@ -317,6 +319,8 @@ export async function batchAsync<T, U>(
 
   for (let i = 0; i < chunks.length; i++) {
     const chunk = chunks[i];
+    if (!chunk) continue;
+    
     const chunkResults = await Promise.all(chunk.map(asyncFn));
     results.push(...chunkResults);
 
@@ -366,8 +370,10 @@ export class LRUCache<K, V> {
 
     // Evict oldest if at capacity
     if (this.cache.size >= this.maxSize) {
-      const oldestKey = this.cache.keys().next().value;
-      this.cache.delete(oldestKey);
+      const oldestIter = this.cache.keys().next();
+      if (!oldestIter.done) {
+        this.cache.delete(oldestIter.value);
+      }
     }
 
     this.cache.set(key, value);

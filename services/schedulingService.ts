@@ -89,15 +89,17 @@ export class SchedulingService {
 
       // Sort posts by schedule date
       const scheduledPosts = posts
-        .filter((post) => post.scheduleDate && post.status === 'scheduled')
-        .sort((a, b) => a.scheduleDate!.getTime() - b.scheduleDate!.getTime());
+        .filter((post): post is Post & { scheduleDate: Date } => 
+          post.status === 'scheduled' && post.scheduleDate !== undefined && post.scheduleDate !== null
+        )
+        .sort((a, b) => a.scheduleDate.getTime() - b.scheduleDate.getTime());
 
       // Check for timing conflicts
       for (let i = 0; i < scheduledPosts.length - 1; i++) {
         const currentPost = scheduledPosts[i];
         const nextPost = scheduledPosts[i + 1];
 
-        if (!currentPost.scheduleDate || !nextPost.scheduleDate) continue;
+        if (!currentPost || !nextPost || !currentPost.scheduleDate || !nextPost.scheduleDate) continue;
 
         const timeDifference = nextPost.scheduleDate.getTime() - currentPost.scheduleDate.getTime();
         const hoursDifference = timeDifference / (1000 * 60 * 60);
@@ -260,10 +262,14 @@ export class SchedulingService {
 
           if (spacing === 'optimal' && respectOptimalTimes && optimalTimesByPlatform[platform]) {
             // Use optimal times
+            const platformOptimalTimes = optimalTimesByPlatform[platform];
+            // Ensure we have valid optimal times array
+            if (!platformOptimalTimes) continue;
+            
             const optimalSlot = this.findNextOptimalSlot(
               availableSlots,
               currentSlotIndex,
-              optimalTimesByPlatform[platform]
+              platformOptimalTimes
             );
             suggestedTime = optimalSlot.time;
             reason = `Scheduled at optimal time (${optimalSlot.slot.time}) for maximum engagement on ${platform}`;
@@ -271,8 +277,12 @@ export class SchedulingService {
             currentSlotIndex = optimalSlot.index + 1;
           } else if (spacing === 'even') {
             // Even distribution
-            const slotIndex = Math.min(currentSlotIndex, availableSlots.length - 1);
-            suggestedTime = availableSlots[slotIndex];
+            if (availableSlots.length > 0) {
+              const slotIndex = Math.min(currentSlotIndex, availableSlots.length - 1);
+              suggestedTime = availableSlots[slotIndex]!;
+            } else {
+              suggestedTime = new Date(); // Fallback
+            }
             reason = `Evenly distributed across the selected time period`;
             currentSlotIndex++;
           } else if (spacing === 'custom' && customSpacingHours) {
@@ -283,8 +293,12 @@ export class SchedulingService {
             reason = `Scheduled with ${customSpacingHours} hour spacing as requested`;
           } else {
             // Default to even spacing
-            const slotIndex = Math.min(currentSlotIndex, availableSlots.length - 1);
-            suggestedTime = availableSlots[slotIndex];
+            if (availableSlots.length > 0) {
+              const slotIndex = Math.min(currentSlotIndex, availableSlots.length - 1);
+              suggestedTime = availableSlots[slotIndex]!;
+            } else {
+              suggestedTime = new Date(); // Fallback
+            }
             reason = `Scheduled with default spacing`;
             currentSlotIndex++;
           }
@@ -293,7 +307,7 @@ export class SchedulingService {
           if (targetTimezones && targetTimezones.length > 0) {
             const timezoneAdjustments = this.adjustForTimezones(suggestedTime, targetTimezones);
             // Use the first timezone adjustment as the primary suggestion
-            if (timezoneAdjustments.length > 0) {
+            if (timezoneAdjustments.length > 0 && timezoneAdjustments[0]) {
               suggestedTime = timezoneAdjustments[0].adjustedTime;
               reason += ` (adjusted for ${targetTimezones[0]} timezone)`;
             }
@@ -332,15 +346,17 @@ export class SchedulingService {
 
         if (optimalTimes.length > 0) {
           const bestTime = optimalTimes[0];
-          const suggestedTime = this.getNextOccurrenceOfTimeSlot(bestTime);
+          if (bestTime) {
+            const suggestedTime = this.getNextOccurrenceOfTimeSlot(bestTime);
 
-          suggestions.push({
-            postId: post.id,
-            platform,
-            suggestedTime,
-            reason: `Optimal time based on historical engagement data for ${platform}`,
-            confidence: bestTime.confidence,
-          });
+            suggestions.push({
+              postId: post.id,
+              platform,
+              suggestedTime,
+              reason: `Optimal time based on historical engagement data for ${platform}`,
+              confidence: bestTime.confidence,
+            });
+          }
         } else {
           // Fallback to general best practices
           const fallbackTime = this.getFallbackOptimalTime();
@@ -444,13 +460,22 @@ export class SchedulingService {
         timeSlotMap[key] = { engagement: 0, count: 0 };
       }
 
-      timeSlotMap[key].engagement += engagement;
-      timeSlotMap[key].count += 1;
+      const slot = timeSlotMap[key];
+      if (slot) {
+        slot.engagement += engagement;
+        slot.count += 1;
+      }
     });
 
     return Object.entries(timeSlotMap)
       .map(([key, data]) => {
-        const [dayOfWeek, hour] = key.split('-').map(Number);
+        const parts = key.split('-').map(Number);
+        const dayOfWeek = parts[0];
+        const hour = parts[1];
+        
+        // Ensure dayOfWeek and hour are valid numbers
+        if (dayOfWeek === undefined || hour === undefined || isNaN(dayOfWeek) || isNaN(hour)) return null;
+
         return {
           time: `${hour.toString().padStart(2, '0')}:00`,
           dayOfWeek,
@@ -458,6 +483,7 @@ export class SchedulingService {
           confidence: Math.min(data.count / 10, 1),
         };
       })
+      .filter((slot): slot is TimeSlot => slot !== null)
       .sort((a, b) => b.engagementScore - a.engagementScore)
       .slice(0, 10);
   }
@@ -515,16 +541,28 @@ export class SchedulingService {
     startIndex: number,
     optimalTimes: TimeSlot[]
   ): { time: Date; slot: TimeSlot; index: number } {
+    // Return early if no slots are available
+    if (availableSlots.length === 0) {
+      return {
+        time: new Date(),
+        slot: { time: '12:00', dayOfWeek: 1, engagementScore: 0, confidence: 0.5 },
+        index: startIndex
+      };
+    }
+
     // Find the next available slot that matches an optimal time
     for (let i = startIndex; i < availableSlots.length; i++) {
       const slot = availableSlots[i];
+      if (!slot) continue;
+
       const slotHour = slot.getHours();
       const slotDay = slot.getDay();
 
-      const matchingOptimalTime = optimalTimes.find(
-        (optimal) =>
-          optimal.dayOfWeek === slotDay && parseInt(optimal.time.split(':')[0]) === slotHour
-      );
+      const matchingOptimalTime = optimalTimes.find((optimal) => {
+        const timeStr = optimal.time || '12:00';
+        const hourStr = timeStr.split(':')[0] || '12';
+        return optimal.dayOfWeek === slotDay && parseInt(hourStr) === slotHour;
+      });
 
       if (matchingOptimalTime) {
         return { time: slot, slot: matchingOptimalTime, index: i };
@@ -532,10 +570,17 @@ export class SchedulingService {
     }
 
     // Fallback to next available slot with best optimal time
-    const nextSlot = availableSlots[Math.min(startIndex, availableSlots.length - 1)];
+    const safeIndex = Math.min(startIndex, availableSlots.length - 1);
+    const nextSlot = availableSlots[safeIndex];
+    
+    // Ensure we have a valid Date object even in fallback cases
+    const validTime = nextSlot || new Date();
+
+    const fallbackSlot = optimalTimes[0] || { time: '12:00', dayOfWeek: 1, engagementScore: 0, confidence: 0.5 };
+
     return {
-      time: nextSlot,
-      slot: optimalTimes[0] || { time: '12:00', dayOfWeek: 1, engagementScore: 0, confidence: 0.5 },
+      time: validTime,
+      slot: fallbackSlot,
       index: startIndex,
     };
   }
@@ -543,7 +588,9 @@ export class SchedulingService {
   private getNextOccurrenceOfTimeSlot(timeSlot: TimeSlot): Date {
     const now = new Date();
     const targetDay = timeSlot.dayOfWeek;
-    const targetHour = parseInt(timeSlot.time.split(':')[0]);
+    // ensure time string exists and has valid format
+    const timeStr = timeSlot.time || '12:00';
+    const targetHour = parseInt(timeStr.split(':')[0] || '12');
 
     // Find next occurrence of this day and time
     const daysUntilTarget = (targetDay - now.getDay() + 7) % 7;
