@@ -1,0 +1,545 @@
+App.tsx(494,13): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+App.tsx(524,11): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+App.tsx(1407,38): error TS18048: 'config' is possibly 'undefined'.
+App.tsx(1490,36): error TS18048: 'config' is possibly 'undefined'.
+App.tsx(1493,55): error TS18048: 'config' is possibly 'undefined'.
+App.tsx(1498,56): error TS18048: 'config' is possibly 'undefined'.
+App.tsx(1624,72): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+app/handler/[...stack]/page.tsx(4,29): error TS2345: Argument of type 'StackServerApp<true, string>' is not assignable to parameter of type 'BaseHandlerProps & ({ app: StackServerApp<boolean>; } & (Partial<RouteProps> | { routeProps: unknown; }))'.
+components/AnalyticsDashboard.tsx(46,28): error TS2304: Cannot find name 'analyticsService'.
+components/AppRouter.tsx(5,17): error TS2307: Cannot find module './App' or its corresponding type declarations.
+components/AudienceProfileManager.tsx(169,13): error TS2304: Cannot find name 'db'.
+components/AudienceProfileManager.tsx(307,30): error TS2304: Cannot find name 'db'.
+components/AudienceProfileManager.tsx(314,30): error TS2304: Cannot find name 'db'.
+components/BrandVoiceManager.tsx(131,13): error TS2304: Cannot find name 'db'.
+components/BrandVoiceManager.tsx(193,48): error TS2345: Argument of type 'string' is not assignable to parameter of type 'string[]'.
+components/BrandVoiceManager.tsx(245,28): error TS2304: Cannot find name 'db'.
+components/BrandVoiceManager.tsx(250,28): error TS2304: Cannot find name 'db'.
+components/CalendarView.tsx(52,30): error TS2304: Cannot find name 'schedulingService'.
+components/CampaignManager.tsx(63,50): error TS2554: Expected 1 arguments, but got 0.
+components/CampaignManager.tsx(75,45): error TS2339: Property 'getCampaignPerformance' does not exist on type 'CampaignService'.
+components/CampaignManager.tsx(150,46): error TS2554: Expected 2 arguments, but got 1.
+components/CampaignManager.tsx(185,53): error TS2554: Expected 3 arguments, but got 2.
+components/CampaignManager.tsx(205,56): error TS2345: Argument of type 'boolean' is not assignable to parameter of type 'string'.
+components/CampaignManager.tsx(220,13): error TS2304: Cannot find name 'db'.
+components/CampaignManager.tsx(249,7): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+components/CampaignManager.tsx(250,7): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+components/ContentSeriesManager.tsx(71,48): error TS2551: Property 'getContentSeries' does not exist on type 'CampaignService'. Did you mean 'createContentSeries'?
+components/ContentSeriesManager.tsx(85,49): error TS2339: Property 'suggestSeriesAdjustments' does not exist on type 'CampaignService'.
+components/ContentSeriesManager.tsx(89,57): error TS2339: Property 'optimizeSeriesScheduling' does not exist on type 'CampaignService'.
+components/ContentSeriesManager.tsx(111,44): error TS2554: Expected 3 arguments, but got 1.
+components/ContentSeriesManager.tsx(144,51): error TS2551: Property 'updateContentSeries' does not exist on type 'CampaignService'. Did you mean 'createContentSeries'?
+components/ContentSeriesManager.tsx(166,29): error TS2551: Property 'deleteContentSeries' does not exist on type 'CampaignService'. Did you mean 'createContentSeries'?
+components/ContentSeriesManager.tsx(182,51): error TS2339: Property 'advanceContentSeries' does not exist on type 'CampaignService'.
+components/ContentSeriesManager.tsx(197,13): error TS2304: Cannot find name 'db'.
+components/DragDropContentBuilder.tsx(354,21): error TS2552: Cannot find name 'blockTypes'. Did you mean 'blockType'?
+components/DragDropContentBuilder.tsx(354,38): error TS7006: Parameter 'bt' implicitly has an 'any' type.
+components/EnhancedApp.tsx(199,30): error TS18048: 'hint' is possibly 'undefined'.
+components/EnhancedApp.tsx(208,43): error TS18048: 'hint' is possibly 'undefined'.
+components/EnhancedApp.tsx(209,52): error TS18048: 'hint' is possibly 'undefined'.
+components/ErrorBoundaryEnhanced.tsx(172,13): error TS2304: Cannot find name 'severity'.
+components/ErrorBoundaryEnhanced.tsx(232,35): error TS2552: Cannot find name 'severity'. Did you mean '_severity'?
+components/ErrorBoundaryEnhanced.tsx(232,58): error TS2552: Cannot find name 'severity'. Did you mean '_severity'?
+components/ErrorBoundaryEnhanced.tsx(250,11): error TS2304: Cannot find name 'severity'.
+components/integrations/ConfigureIntegration.tsx(299,37): error TS2345: Argument of type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { autoSync: boolean; syncInterval?: number | undefined; batchSize?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to parameter of type 'SetStateAction<UpdateIntegrationData>'.
+  Type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { autoSync: boolean; syncInterval?: number | undefined; batchSize?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to type '(prevState: UpdateIntegrationData) => UpdateIntegrationData'.
+    Call signature return types '{ configuration: { syncSettings: { autoSync: boolean; syncInterval?: number | undefined; batchSize?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; customFields?: { ...; } | undefine...' and 'UpdateIntegrationData' are incompatible.
+      The types of 'configuration.syncSettings.syncInterval' are incompatible between these types.
+        Type 'number | undefined' is not assignable to type 'number'.
+          Type 'undefined' is not assignable to type 'number'.
+components/integrations/ConfigureIntegration.tsx(321,37): error TS2345: Argument of type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { syncInterval: number; autoSync?: boolean | undefined; batchSize?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to parameter of type 'SetStateAction<UpdateIntegrationData>'.
+  Type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { syncInterval: number; autoSync?: boolean | undefined; batchSize?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to type '(prevState: UpdateIntegrationData) => UpdateIntegrationData'.
+    Call signature return types '{ configuration: { syncSettings: { syncInterval: number; autoSync?: boolean | undefined; batchSize?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; customFields?: { ...; } | undefine...' and 'UpdateIntegrationData' are incompatible.
+      The types of 'configuration.syncSettings.autoSync' are incompatible between these types.
+        Type 'boolean | undefined' is not assignable to type 'boolean'.
+          Type 'undefined' is not assignable to type 'boolean'.
+components/integrations/ConfigureIntegration.tsx(345,37): error TS2345: Argument of type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { batchSize: number; autoSync?: boolean | undefined; syncInterval?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to parameter of type 'SetStateAction<UpdateIntegrationData>'.
+  Type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { batchSize: number; autoSync?: boolean | undefined; syncInterval?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to type '(prevState: UpdateIntegrationData) => UpdateIntegrationData'.
+    Call signature return types '{ configuration: { syncSettings: { batchSize: number; autoSync?: boolean | undefined; syncInterval?: number | undefined; retryAttempts?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; customFields?: { ...; } | undefine...' and 'UpdateIntegrationData' are incompatible.
+      The types of 'configuration.syncSettings.autoSync' are incompatible between these types.
+        Type 'boolean | undefined' is not assignable to type 'boolean'.
+          Type 'undefined' is not assignable to type 'boolean'.
+components/integrations/ConfigureIntegration.tsx(367,37): error TS2345: Argument of type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { retryAttempts: number; autoSync?: boolean | undefined; syncInterval?: number | undefined; batchSize?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to parameter of type 'SetStateAction<UpdateIntegrationData>'.
+  Type '(prev: UpdateIntegrationData) => { configuration: { syncSettings: { retryAttempts: number; autoSync?: boolean | undefined; syncInterval?: number | undefined; batchSize?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; c...' is not assignable to type '(prevState: UpdateIntegrationData) => UpdateIntegrationData'.
+    Call signature return types '{ configuration: { syncSettings: { retryAttempts: number; autoSync?: boolean | undefined; syncInterval?: number | undefined; batchSize?: number | undefined; timeoutMs?: number | undefined; syncOnStartup?: boolean | undefined; syncOnSchedule?: boolean | undefined; }; ... 4 more ...; customFields?: { ...; } | undefine...' and 'UpdateIntegrationData' are incompatible.
+      The types of 'configuration.syncSettings.autoSync' are incompatible between these types.
+        Type 'boolean | undefined' is not assignable to type 'boolean'.
+          Type 'undefined' is not assignable to type 'boolean'.
+components/integrations/ContentPreview.tsx(14,10): error TS2724: '"../../services/integrations/socialMediaIntegrations"' has no exported member named 'socialMediaIntegrations'. Did you mean 'SocialMediaIntegrations'?
+components/integrations/ContentPreview.tsx(68,43): error TS18048: 'adaptedContent' is possibly 'undefined'.
+components/integrations/IntegrationCredentialsForm.tsx(505,31): error TS7006: Parameter 'field' implicitly has an 'any' type.
+components/integrations/IntegrationCredentialsForm.tsx(558,37): error TS7006: Parameter 'f' implicitly has an 'any' type.
+components/integrations/IntegrationCredentialsForm.tsx(559,37): error TS7006: Parameter 'f' implicitly has an 'any' type.
+components/integrations/IntegrationCredentialsForm.tsx(571,32): error TS7006: Parameter 'field' implicitly has an 'any' type.
+components/integrations/IntegrationCredentialsForm.tsx(571,39): error TS7006: Parameter 'index' implicitly has an 'any' type.
+components/integrations/IntegrationOverview.tsx(124,91): error TS2339: Property 'healthScore' does not exist on type 'IntegrationStatus'.
+  Property 'healthScore' does not exist on type '"connected"'.
+components/integrations/IntegrationOverview.tsx(126,40): error TS2339: Property 'healthScore' does not exist on type 'IntegrationStatus'.
+  Property 'healthScore' does not exist on type '"connected"'.
+components/integrations/IntegrationOverview.tsx(132,58): error TS2339: Property 'healthScore' does not exist on type 'IntegrationStatus'.
+  Property 'healthScore' does not exist on type '"connected"'.
+components/integrations/IntegrationOverview.tsx(289,70): error TS2339: Property 'healthScore' does not exist on type 'IntegrationStatus'.
+  Property 'healthScore' does not exist on type '"connected"'.
+components/integrations/RealTimeMonitoringDashboard.tsx(185,9): error TS2304: Cannot find name 'monitoringService'.
+components/integrations/RealTimeMonitoringDashboard.tsx(195,9): error TS2304: Cannot find name 'monitoringService'.
+components/integrations/RealTimeMonitoringDashboard.tsx(204,57): error TS2304: Cannot find name 'monitoringService'.
+components/LazyComponents.tsx(34,9): error TS2322: Type 'Promise<typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/IntegrationManager")>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type 'typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/IntegrationManager")' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Types of property 'default' are incompatible.
+      Type 'FC<IntegrationManagerProps>' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+        Type 'FunctionComponent<IntegrationManagerProps>' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+          Types of parameters 'props' and 'props' are incompatible.
+            Type 'Record<string, unknown>' is missing the following properties from type 'IntegrationManagerProps': isOpen, onClose
+components/LazyComponents.tsx(40,9): error TS2322: Type 'Promise<{ default: never; } | { default: FC<AnalyticsDashboardProps>; }>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type '{ default: never; } | { default: FC<AnalyticsDashboardProps>; }' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Type '{ default: React.FC<AnalyticsDashboardProps>; }' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+      Types of property 'default' are incompatible.
+        Type 'FC<AnalyticsDashboardProps>' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+          Type 'FunctionComponent<AnalyticsDashboardProps>' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+            Types of parameters 'props' and 'props' are incompatible.
+              Type 'Record<string, unknown>' is missing the following properties from type 'AnalyticsDashboardProps': isOpen, onClose, loading, setLoading
+components/LazyComponents.tsx(57,9): error TS2322: Type 'Promise<typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/RepurposingWorkflow")>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type 'typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/RepurposingWorkflow")' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Types of property 'default' are incompatible.
+      Type 'FC<RepurposingWorkflowProps>' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+        Type 'FunctionComponent<RepurposingWorkflowProps>' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+          Types of parameters 'props' and 'props' are incompatible.
+            Type 'Record<string, unknown>' is missing the following properties from type 'RepurposingWorkflowProps': post, onClose, onSuccess, onError
+components/LazyComponents.tsx(62,9): error TS2322: Type 'Promise<typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/ImageStyleManager")>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type 'typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/ImageStyleManager")' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Types of property 'default' are incompatible.
+      Type 'FC<ImageStyleManagerProps>' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+        Type 'FunctionComponent<ImageStyleManagerProps>' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+          Types of parameters 'props' and 'props' are incompatible.
+            Type 'Record<string, unknown>' is missing the following properties from type 'ImageStyleManagerProps': onClose, onSuccess, onError, userId
+components/LazyComponents.tsx(67,9): error TS2322: Type 'Promise<typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/ContentSeriesManager")>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type 'typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/ContentSeriesManager")' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Types of property 'default' are incompatible.
+      Type 'FC<ContentSeriesManagerProps>' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+        Type 'FunctionComponent<ContentSeriesManagerProps>' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+          Types of parameters 'props' and 'props' are incompatible.
+            Type 'Record<string, unknown>' is missing the following properties from type 'ContentSeriesManagerProps': isOpen, onClose, posts, campaigns
+components/LazyComponents.tsx(72,9): error TS2322: Type 'Promise<typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/TemplateLibrary")>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type 'typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/TemplateLibrary")' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Types of property 'default' are incompatible.
+      Type '({ isOpen, onClose, onSelectTemplate, onEditTemplate, onCreateNew, userId, }: TemplateLibraryProps) => Element | null' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+        Type '({ isOpen, onClose, onSelectTemplate, onEditTemplate, onCreateNew, userId, }: TemplateLibraryProps) => Element | null' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+          Types of parameters '__0' and 'props' are incompatible.
+            Type 'Record<string, unknown>' is missing the following properties from type 'TemplateLibraryProps': isOpen, onClose, onSelectTemplate, onEditTemplate, and 2 more.
+components/LazyComponents.tsx(77,9): error TS2322: Type 'Promise<{ default: never; } | { default: FC<PerformanceInsightsProps>; }>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type '{ default: never; } | { default: FC<PerformanceInsightsProps>; }' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Type '{ default: React.FC<PerformanceInsightsProps>; }' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+      Types of property 'default' are incompatible.
+        Type 'FC<PerformanceInsightsProps>' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+          Type 'FunctionComponent<PerformanceInsightsProps>' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+            Types of parameters 'props' and 'props' are incompatible.
+              Type 'Record<string, unknown>' is missing the following properties from type 'PerformanceInsightsProps': isOpen, onClose, posts, loading, setLoading
+components/LazyComponents.tsx(92,9): error TS2322: Type 'Promise<typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/GamificationSystem")>' is not assignable to type 'Promise<{ default: ComponentType<Record<string, unknown>>; }>'.
+  Type 'typeof import("C:/Users/prett/OneDrive/Desktop/SoloSuccess_Content_Generator-main/components/GamificationSystem")' is not assignable to type '{ default: ComponentType<Record<string, unknown>>; }'.
+    Types of property 'default' are incompatible.
+      Type 'FC<GamificationSystemProps>' is not assignable to type 'ComponentType<Record<string, unknown>>'.
+        Type 'FunctionComponent<GamificationSystemProps>' is not assignable to type 'FunctionComponent<Record<string, unknown>>'.
+          Types of parameters 'props' and 'props' are incompatible.
+            Property 'userId' is missing in type 'Record<string, unknown>' but required in type 'GamificationSystemProps'.
+components/LoadingStateManager.tsx(289,14): error TS2304: Cannot find name 'Clock'.
+components/LoadingStateManager.tsx(477,21): error TS2339: Property 'key' does not exist on type '{ key: string; label: string; operation: () => Promise<T>; } | undefined'.
+components/LoadingStateManager.tsx(477,26): error TS2339: Property 'operation' does not exist on type '{ key: string; label: string; operation: () => Promise<T>; } | undefined'.
+components/OnboardingFlow.tsx(372,42): error TS18048: 'currentStepData' is possibly 'undefined'.
+components/OnboardingFlow.tsx(374,18): error TS18048: 'currentStepData' is possibly 'undefined'.
+components/OnboardingFlow.tsx(442,53): error TS18048: 'currentStepData' is possibly 'undefined'.
+components/OnboardingFlow.tsx(443,43): error TS18048: 'currentStepData' is possibly 'undefined'.
+components/OnboardingFlow.tsx(459,14): error TS18048: 'currentStepData' is possibly 'undefined'.
+components/OnboardingFlow.tsx(461,26): error TS18048: 'currentStepData' is possibly 'undefined'.
+components/OnboardingFlow.tsx(465,18): error TS18048: 'currentStepData' is possibly 'undefined'.
+components/pages/ForgotPasswordPage.tsx(20,32): error TS2339: Property 'sendPasswordResetEmail' does not exist on type 'StackClientApp<true, string>'.
+components/pages/ProfilePage.tsx(60,48): error TS2339: Property 'email' does not exist on type 'CurrentUser | CurrentInternalUser'.
+  Property 'email' does not exist on type 'CurrentUser'.
+components/pages/ProfilePage.tsx(61,19): error TS2339: Property 'profile' does not exist on type 'CurrentUser | CurrentInternalUser'.
+  Property 'profile' does not exist on type 'CurrentUser'.
+components/pages/ProfilePage.tsx(62,23): error TS2339: Property 'profile' does not exist on type 'CurrentUser | CurrentInternalUser'.
+  Property 'profile' does not exist on type 'CurrentUser'.
+components/pages/ProfilePage.tsx(78,9): error TS2353: Object literal may only specify known properties, and 'profile' does not exist in type 'UserUpdateOptions'.
+components/pages/ProfilePage.tsx(131,13): error TS18047: 'user' is possibly 'null'.
+components/pages/ProfilePage.tsx(213,31): error TS2339: Property 'email' does not exist on type 'CurrentUser | CurrentInternalUser'.
+  Property 'email' does not exist on type 'CurrentUser'.
+components/pages/SignUpPage.tsx(42,11): error TS2367: This comparison appears to be unintentional because the types '"error" | "ok"' and '"success"' have no overlap.
+components/pages/SignUpPage.tsx(48,25): error TS2339: Property 'error' does not exist on type 'Result<undefined, (KnownError & KnownErrorBrand<"USER_EMAIL_ALREADY_EXISTS"> & { constructorArgs: []; }) | (KnownError & KnownErrorBrand<"PASSWORD_REQUIREMENTS_NOT_MET"> & { ...; })>'.
+  Property 'error' does not exist on type '{ status: "ok"; data: undefined; }'.
+components/pages/SignUpPage.tsx(59,43): error TS2554: Expected 1 arguments, but got 2.
+components/pages/SignUpPage.tsx(69,43): error TS2554: Expected 1 arguments, but got 2.
+components/PasswordReset.tsx(23,32): error TS2339: Property 'sendPasswordResetEmail' does not exist on type 'StackClientApp<true, string>'.
+components/PerformanceInsights.tsx(60,35): error TS2304: Cannot find name 'analyticsService'.
+components/PerformanceInsights.tsx(64,33): error TS2304: Cannot find name 'analyticsService'.
+components/PerformanceInsights.tsx(79,30): error TS2304: Cannot find name 'analyticsService'.
+components/PerformanceMonitor.tsx(49,76): error TS2339: Property 'navigationStart' does not exist on type 'PerformanceNavigationTiming'.
+components/RepurposingWorkflow.tsx(194,18): error TS2345: Argument of type '(prev: { [format: string]: RepurposingResult; }) => { [x: string]: RepurposingResult | { optimizationScore: number; suggestions: { type: "engagement" | "structure" | "platform" | "seo"; title: string; description: string; priority: "high" | ... 1 more ... | "low"; }[]; content: string; parsedContent: string; format?...' is not assignable to parameter of type 'SetStateAction<{ [format: string]: RepurposingResult; }>'.
+  Type '(prev: { [format: string]: RepurposingResult; }) => { [x: string]: RepurposingResult | { optimizationScore: number; suggestions: { type: "engagement" | "structure" | "platform" | "seo"; title: string; description: string; priority: "high" | ... 1 more ... | "low"; }[]; content: string; parsedContent: string; format?...' is not assignable to type '(prevState: { [format: string]: RepurposingResult; }) => { [format: string]: RepurposingResult; }'.
+    Type '{ [x: string]: RepurposingResult | { optimizationScore: number; suggestions: { type: "structure" | "engagement" | "platform" | "seo"; title: string; description: string; priority: "high" | "medium" | "low"; }[]; content: string; parsedContent: string; format?: string | undefined; }; }' is not assignable to type '{ [format: string]: RepurposingResult; }'.
+      'string' index signatures are incompatible.
+        Type 'RepurposingResult | { optimizationScore: number; suggestions: { type: "engagement" | "structure" | "platform" | "seo"; title: string; description: string; priority: "high" | ... 1 more ... | "low"; }[]; content: string; parsedContent: string; format?: string | undefined; }' is not assignable to type 'RepurposingResult'.
+          Type '{ optimizationScore: number; suggestions: { type: "structure" | "engagement" | "platform" | "seo"; title: string; description: string; priority: "high" | "medium" | "low"; }[]; content: string; parsedContent: string; format?: string | undefined; }' is not assignable to type 'RepurposingResult'.
+            Types of property 'format' are incompatible.
+              Type 'string | undefined' is not assignable to type 'string'.
+                Type 'undefined' is not assignable to type 'string'.
+components/RepurposingWorkflow.tsx(200,53): error TS2532: Object is possibly 'undefined'.
+components/SmartScheduler.tsx(76,27): error TS2304: Cannot find name 'schedulingService'.
+components/SmartScheduler.tsx(92,33): error TS2304: Cannot find name 'schedulingService'.
+components/SmartScheduler.tsx(105,30): error TS2304: Cannot find name 'schedulingService'.
+components/SmartScheduler.tsx(116,33): error TS2304: Cannot find name 'schedulingService'.
+components/TemplateEditor.tsx(4,10): error TS2305: Module '"../constants"' has no exported member 'Plus'.
+components/TemplateEditor.tsx(4,16): error TS2305: Module '"../constants"' has no exported member 'Trash2'.
+components/TemplateEditor.tsx(4,24): error TS2305: Module '"../constants"' has no exported member 'ArrowUp'.
+components/TemplateEditor.tsx(4,33): error TS2305: Module '"../constants"' has no exported member 'ArrowDown'.
+components/TemplateEditor.tsx(4,44): error TS2305: Module '"../constants"' has no exported member 'Save'.
+components/TemplateEditor.tsx(4,50): error TS2305: Module '"../constants"' has no exported member 'Eye'.
+components/TemplateEditor.tsx(4,55): error TS2305: Module '"../constants"' has no exported member 'Settings'.
+components/TemplateEditor.tsx(80,31): error TS2304: Cannot find name 'db'.
+components/TemplateEditor.tsx(83,31): error TS2304: Cannot find name 'db'.
+components/TemplateEditor.tsx(132,8): error TS2322: Type 'TemplateSection | undefined' is not assignable to type 'TemplateSection'.
+  Type 'undefined' is not assignable to type 'TemplateSection'.
+components/TemplateEditor.tsx(132,33): error TS2322: Type 'TemplateSection | undefined' is not assignable to type 'TemplateSection'.
+  Type 'undefined' is not assignable to type 'TemplateSection'.
+components/TemplateEditor.tsx(145,8): error TS2322: Type 'TemplateSection | undefined' is not assignable to type 'TemplateSection'.
+  Type 'undefined' is not assignable to type 'TemplateSection'.
+components/TemplateEditor.tsx(145,29): error TS2322: Type 'TemplateSection | undefined' is not assignable to type 'TemplateSection'.
+  Type 'undefined' is not assignable to type 'TemplateSection'.
+components/UserFeedbackSystem.tsx(80,13): error TS2304: Cannot find name 'Bug'.
+components/VoiceCommands.tsx(112,33): error TS2304: Cannot find name 'SpeechRecognition'.
+components/VoiceCommands.tsx(236,44): error TS7006: Parameter 'event' implicitly has an 'any' type.
+components/VoiceCommands.tsx(260,43): error TS7006: Parameter 'event' implicitly has an 'any' type.
+components/VoiceCommands.tsx(340,15): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+constants.tsx(134,14): error TS2322: Type 'FC<{ className?: string | undefined; }> | undefined' is not assignable to type 'FC<{ className?: string | undefined; }>'.
+  Type 'undefined' is not assignable to type 'FunctionComponent<{ className?: string | undefined; }>'.
+constants.tsx(135,15): error TS2322: Type 'FC<{ className?: string | undefined; }> | undefined' is not assignable to type 'FC<{ className?: string | undefined; }>'.
+  Type 'undefined' is not assignable to type 'FunctionComponent<{ className?: string | undefined; }>'.
+constants.tsx(136,15): error TS2322: Type 'FC<{ className?: string | undefined; }> | undefined' is not assignable to type 'FC<{ className?: string | undefined; }>'.
+  Type 'undefined' is not assignable to type 'FunctionComponent<{ className?: string | undefined; }>'.
+constants.tsx(137,16): error TS2322: Type 'FC<{ className?: string | undefined; }> | undefined' is not assignable to type 'FC<{ className?: string | undefined; }>'.
+  Type 'undefined' is not assignable to type 'FunctionComponent<{ className?: string | undefined; }>'.
+constants.tsx(138,14): error TS2322: Type 'FC<{ className?: string | undefined; }> | undefined' is not assignable to type 'FC<{ className?: string | undefined; }>'.
+  Type 'undefined' is not assignable to type 'FunctionComponent<{ className?: string | undefined; }>'.
+constants.tsx(139,14): error TS2322: Type 'FC<{ className?: string | undefined; }> | undefined' is not assignable to type 'FC<{ className?: string | undefined; }>'.
+  Type 'undefined' is not assignable to type 'FunctionComponent<{ className?: string | undefined; }>'.
+hooks/useErrorRecovery.ts(408,27): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+hooks/useErrorState.ts(106,7): error TS2448: Block-scoped variable 'retry' used before its declaration.
+hooks/useErrorState.ts(106,7): error TS2454: Variable 'retry' is used before being assigned.
+hooks/useErrorState.ts(107,7): error TS2448: Block-scoped variable 'scheduleRetry' used before its declaration.
+hooks/useErrorState.ts(107,7): error TS2454: Variable 'scheduleRetry' is used before being assigned.
+hooks/useErrorState.ts(400,34): error TS2532: Object is possibly 'undefined'.
+hooks/useErrorState.ts(400,34): error TS2722: Cannot invoke an object which is possibly 'undefined'.
+hooks/usePerformanceMonitoring.ts(150,9): error TS2352: Conversion of type 'Performance' to type '{ memory: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number; }; }' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property 'memory' is missing in type 'Performance' but required in type '{ memory: { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number; }; }'.
+hooks/usePerformanceMonitoring.ts(291,44): error TS18048: 'lastEntry' is possibly 'undefined'.
+scripts/validate-database-schema.ts(47,57): error TS2532: Object is possibly 'undefined'.
+scripts/validate-database-schema.ts(286,24): error TS2532: Object is possibly 'undefined'.
+scripts/validate-database-schema.ts(297,62): error TS2532: Object is possibly 'undefined'.
+scripts/validate-database-schema.ts(310,38): error TS2532: Object is possibly 'undefined'.
+scripts/validate-database-schema.ts(341,9): error TS18048: 'jsonPost' is possibly 'undefined'.
+scripts/validate-database-schema.ts(341,40): error TS18048: 'jsonPost' is possibly 'undefined'.
+scripts/validate-database-schema.ts(343,57): error TS18048: 'jsonPost' is possibly 'undefined'.
+scripts/validate-database-schema.ts(344,58): error TS18048: 'jsonPost' is possibly 'undefined'.
+scripts/validate-database-schema.ts(350,47): error TS18048: 'jsonPost' is possibly 'undefined'.
+services/advancedSecurityService.ts(337,39): error TS2339: Property 'createdAt' does not exist on type 'EncryptedCredentials'.
+services/advancedSecurityService.ts(338,53): error TS2339: Property 'createdAt' does not exist on type 'EncryptedCredentials'.
+services/advancedSecurityService.ts(775,56): error TS2345: Argument of type '{ type: string; severity: "high"; description: string; evidence: { issues: SecurityIssue[]; recommendations: string[]; }; status: "open"; }' is not assignable to parameter of type 'Omit<SecurityIncident, "id" | "createdAt" | "updatedAt" | "timestamp">'.
+  Property 'integrationId' is missing in type '{ type: string; severity: "high"; description: string; evidence: { issues: SecurityIssue[]; recommendations: string[]; }; status: "open"; }' but required in type 'Omit<SecurityIncident, "id" | "createdAt" | "updatedAt" | "timestamp">'.
+services/advancedSecurityService.ts(816,56): error TS2345: Argument of type '{ type: string; severity: "critical"; description: string; evidence: { vulnerabilities: Vulnerability[]; }; status: "open"; }' is not assignable to parameter of type 'Omit<SecurityIncident, "id" | "createdAt" | "updatedAt" | "timestamp">'.
+  Property 'integrationId' is missing in type '{ type: string; severity: "critical"; description: string; evidence: { vulnerabilities: Vulnerability[]; }; status: "open"; }' but required in type 'Omit<SecurityIncident, "id" | "createdAt" | "updatedAt" | "timestamp">'.
+services/advancedSecurityService.ts(838,9): error TS2783: 'integrationId' is specified more than once, so this usage will be overwritten.
+services/advancedSecurityService.ts(919,48): error TS2538: Type 'undefined' cannot be used as an index type.
+services/advancedSecurityService.ts(921,48): error TS2538: Type 'undefined' cannot be used as an index type.
+services/advancedSecurityService.ts(956,37): error TS2339: Property 'dataRetention' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(961,37): error TS2339: Property 'consentManagement' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(978,37): error TS2339: Property 'auditLogging' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(983,37): error TS2339: Property 'accessControls' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(988,37): error TS2339: Property 'dataIntegrity' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(1010,37): error TS2339: Property 'accessLogging' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(1015,37): error TS2339: Property 'backupAndRecovery' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(1032,37): error TS2339: Property 'networkSecurity' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(1037,37): error TS2339: Property 'vulnerabilityManagement' does not exist on type 'IntegrationConfig'.
+services/advancedSecurityService.ts(1042,37): error TS2339: Property 'monitoringAndTesting' does not exist on type 'IntegrationConfig'.
+services/aiLearningService.ts(537,58): error TS2551: Property 'getTrendingTopics' does not exist on type 'SocialPlatformService'. Did you mean 'fetchTrendingTopics'?
+services/aiLearningService.ts(541,10): error TS7006: Parameter 't' implicitly has an 'any' type.
+services/aiLearningService.ts(550,11): error TS2353: Object literal may only specify known properties, and 'interests' does not exist in type 'UserPreferences'.
+services/aiLearningService.ts(576,24): error TS18048: 'best' is possibly 'undefined'.
+services/aiLearningService.ts(579,16): error TS18048: 'min' is possibly 'undefined'.
+services/aiLearningService.ts(579,22): error TS18048: 'max' is possibly 'undefined'.
+services/aiLearningService.ts(580,19): error TS18048: 'best' is possibly 'undefined'.
+services/aiLearningService.ts(581,32): error TS18048: 'best' is possibly 'undefined'.
+services/aiLearningService.ts(594,14): error TS18048: 'best' is possibly 'undefined'.
+services/aiLearningService.ts(595,19): error TS18048: 'best' is possibly 'undefined'.
+services/aiLearningService.ts(596,32): error TS18048: 'best' is possibly 'undefined'.
+services/aiRequestQueueService.ts(302,5): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/aiRequestQueueService.ts(517,43): error TS2532: Object is possibly 'undefined'.
+services/aiUsageMonitoringService.ts(223,9): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/aiUsageMonitoringService.ts(283,15): error TS2532: Object is possibly 'undefined'.
+services/analyticsService.ts(80,23): error TS2339: Property 'batchInsertAnalytics' does not exist on type '{ getPosts: (userId?: string | undefined) => Promise<Post[]>; getAllScheduledPosts: () => Promise<Post[]>; getPostsPaginated: (userId: string, page?: number, pageSize?: number, filters?: { ...; } | undefined) => Promise<...>; ... 27 more ...; testConnection: () => Promise<...>; }'.
+services/analyticsService.ts(95,35): error TS2339: Property 'generatePerformanceReport' does not exist on type '{ getPosts: (userId?: string | undefined) => Promise<Post[]>; getAllScheduledPosts: () => Promise<Post[]>; getPostsPaginated: (userId: string, page?: number, pageSize?: number, filters?: { ...; } | undefined) => Promise<...>; ... 27 more ...; testConnection: () => Promise<...>; }'.
+services/analyticsService.ts(122,37): error TS2339: Property 'getTopPerformingContent' does not exist on type '{ getPosts: (userId?: string | undefined) => Promise<Post[]>; getAllScheduledPosts: () => Promise<Post[]>; getPostsPaginated: (userId: string, page?: number, pageSize?: number, filters?: { ...; } | undefined) => Promise<...>; ... 27 more ...; testConnection: () => Promise<...>; }'.
+services/analyticsService.ts(312,13): error TS2322: Type '{ time: string; dayOfWeek: number | undefined; engagementScore: number; confidence: number; }[]' is not assignable to type 'TimeSlot[]'.
+  Type '{ time: string; dayOfWeek: number | undefined; engagementScore: number; confidence: number; }' is not assignable to type 'TimeSlot'.
+    Types of property 'dayOfWeek' are incompatible.
+      Type 'number | undefined' is not assignable to type 'number'.
+        Type 'undefined' is not assignable to type 'number'.
+services/analyticsService.ts(317,20): error TS18048: 'hour' is possibly 'undefined'.
+services/analyticsService.ts(484,69): error TS18048: 'bestHour' is possibly 'undefined'.
+services/analyticsService.ts(505,27): error TS2532: Object is possibly 'undefined'.
+services/analyticsService.ts(530,7): error TS2532: Object is possibly 'undefined'.
+services/analyticsService.ts(532,7): error TS2532: Object is possibly 'undefined'.
+services/analyticsService.ts(533,7): error TS2532: Object is possibly 'undefined'.
+services/cachingService.ts(64,25): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/campaignService.ts(42,33): error TS2554: Expected 2 arguments, but got 1.
+services/campaignService.ts(82,23): error TS2554: Expected 3 arguments, but got 2.
+services/campaignService.ts(95,23): error TS2554: Expected 1 arguments, but got 0.
+services/campaignService.ts(108,34): error TS2554: Expected 1 arguments, but got 0.
+services/campaignService.ts(138,33): error TS2554: Expected 1 arguments, but got 0.
+services/campaignService.ts(150,20): error TS2554: Expected 3 arguments, but got 2.
+services/campaignService.ts(154,16): error TS2554: Expected 2 arguments, but got 1.
+services/campaignService.ts(176,31): error TS2551: Property 'addContentSeries' does not exist on type '{ getPosts: (userId?: string | undefined) => Promise<Post[]>; getAllScheduledPosts: () => Promise<Post[]>; getPostsPaginated: (userId: string, page?: number, pageSize?: number, filters?: { ...; } | undefined) => Promise<...>; ... 27 more ...; testConnection: () => Promise<...>; }'. Did you mean 'getContentSeries'?
+services/campaignService.ts(210,23): error TS2551: Property 'updateContentSeries' does not exist on type '{ getPosts: (userId?: string | undefined) => Promise<Post[]>; getAllScheduledPosts: () => Promise<Post[]>; getPostsPaginated: (userId: string, page?: number, pageSize?: number, filters?: { ...; } | undefined) => Promise<...>; ... 27 more ...; testConnection: () => Promise<...>; }'. Did you mean 'getContentSeries'?
+services/campaignService.ts(223,31): error TS2554: Expected 1 arguments, but got 0.
+services/campaignService.ts(266,20): error TS2554: Expected 2 arguments, but got 1.
+services/campaignService.ts(274,20): error TS2554: Expected 3 arguments, but got 2.
+services/campaignService.ts(278,16): error TS2551: Property 'deleteContentSeries' does not exist on type '{ getPosts: (userId?: string | undefined) => Promise<Post[]>; getAllScheduledPosts: () => Promise<Post[]>; getPostsPaginated: (userId: string, page?: number, pageSize?: number, filters?: { ...; } | undefined) => Promise<...>; ... 27 more ...; testConnection: () => Promise<...>; }'. Did you mean 'getContentSeries'?
+services/campaignService.ts(415,67): error TS2345: Argument of type 'TimeSlot | undefined' is not assignable to parameter of type 'TimeSlot'.
+  Type 'undefined' is not assignable to type 'TimeSlot'.
+services/campaignService.ts(422,27): error TS18048: 'bestTime' is possibly 'undefined'.
+services/campaignService.ts(536,39): error TS18048: 'post' is possibly 'undefined'.
+services/campaignService.ts(547,38): error TS18048: 'bestTime' is possibly 'undefined'.
+services/campaignService.ts(548,36): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+services/campaignService.ts(551,23): error TS18048: 'post' is possibly 'undefined'.
+services/campaignService.ts(555,27): error TS18048: 'bestTime' is possibly 'undefined'.
+services/campaignService.ts(637,11): error TS2532: Object is possibly 'undefined'.
+services/campaignService.ts(712,7): error TS2532: Object is possibly 'undefined'.
+services/campaignService.ts(731,7): error TS2532: Object is possibly 'undefined'.
+services/campaignService.ts(732,7): error TS2532: Object is possibly 'undefined'.
+services/campaignService.ts(733,7): error TS2532: Object is possibly 'undefined'.
+services/campaignService.ts(756,7): error TS2532: Object is possibly 'undefined'.
+services/campaignService.ts(813,23): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+services/clientMonitoringService.ts(77,36): error TS18048: 'lastEntry' is possibly 'undefined'.
+services/clientMonitoringService.ts(83,36): error TS18048: 'firstEntry' is possibly 'undefined'.
+services/clientMonitoringService.ts(83,47): error TS2339: Property 'processingStart' does not exist on type 'PerformanceEntry'.
+services/clientMonitoringService.ts(83,65): error TS18048: 'firstEntry' is possibly 'undefined'.
+services/clientMonitoringService.ts(512,13): error TS18048: 'value' is possibly 'undefined'.
+services/clientMonitoringService.ts(513,25): error TS18048: 'value' is possibly 'undefined'.
+services/credentialEncryption.ts(72,9): error TS2578: Unused '@ts-expect-error' directive.
+services/credentialEncryption.ts(328,37): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+services/databasePerformanceService.ts(198,47): error TS2345: Argument of type 'readonly ParameterOrJSON<Record<string, unknown>>[]' is not assignable to parameter of type 'unknown[]'.
+  The type 'readonly ParameterOrJSON<Record<string, unknown>>[]' is 'readonly' and cannot be assigned to the mutable type 'unknown[]'.
+services/databasePerformanceService.ts(282,7): error TS2322: Type '(Awaited<T> extends Promise<infer R> ? R : Awaited<T>)[]' is not assignable to type 'Awaited<T>[]'.
+  Type 'Awaited<T> extends Promise<infer R> ? R : Awaited<T>' is not assignable to type 'Awaited<T>'.
+    Type 'unknown' is not assignable to type 'Awaited<T>'.
+services/databasePerformanceService.ts(420,34): error TS2503: Cannot find namespace 'postgres'.
+services/databaseService.ts(226,35): error TS2532: Object is possibly 'undefined'.
+services/enhancedDatabaseService.ts(117,54): error TS2345: Argument of type '{ connection: { application_name: string; }; ssl: { rejectUnauthorized: boolean; }; transform: { undefined: null; }; max: number; min: number; idle_timeout: number; connect_timeout: number; prepare: boolean; types: Record<string, unknown>; onnotice?: (notice: postgres.Notice) => void; debug?: boolean; }' is not assignable to parameter of type 'Options<Record<string, PostgresType<any>>>'.
+  Types of property 'types' are incompatible.
+    Type 'Record<string, unknown>' is not assignable to type 'Record<string, PostgresType<any>>'.
+      'string' index signatures are incompatible.
+        Type 'unknown' is not assignable to type 'PostgresType<any>'.
+services/enhancedDatabaseService.ts(130,49): error TS2345: Argument of type '{ max: number; connection: { application_name: string; }; ssl: { rejectUnauthorized: boolean; }; min: number; idle_timeout: number; connect_timeout: number; prepare: boolean; types: Record<string, unknown>; onnotice?: (notice: postgres.Notice) => void; debug?: boolean; }' is not assignable to parameter of type 'Options<Record<string, PostgresType<any>>>'.
+  Types of property 'types' are incompatible.
+    Type 'Record<string, unknown>' is not assignable to type 'Record<string, PostgresType<any>>'.
+      'string' index signatures are incompatible.
+        Type 'unknown' is not assignable to type 'PostgresType<any>'.
+services/enhancedDatabaseService.ts(177,32): error TS2532: Object is possibly 'undefined'.
+services/enhancedDatabaseService.ts(212,47): error TS2769: No overload matches this call.
+  Argument of type 'unknown[]' is not assignable to parameter of type 'never'.
+  Overload 2 of 2, '(template: TemplateStringsArray, ...parameters: readonly ParameterOrFragment<never>[]): PendingQuery<Row[]>', gave the following error.
+    Argument of type 'unknown' is not assignable to parameter of type 'ParameterOrFragment<never>'.
+services/enhancedDatabaseService.ts(253,42): error TS2769: No overload matches this call.
+  Argument of type 'unknown[]' is not assignable to parameter of type 'never'.
+  Overload 2 of 2, '(template: TemplateStringsArray, ...parameters: readonly ParameterOrFragment<never>[]): PendingQuery<Row[]>', gave the following error.
+    Argument of type 'unknown' is not assignable to parameter of type 'ParameterOrFragment<never>'.
+services/enhancedDatabaseService.ts(271,5): error TS2322: Type 'UnwrapPromiseArray<T>' is not assignable to type 'T'.
+  'T' could be instantiated with an arbitrary type which could be unrelated to 'UnwrapPromiseArray<T>'.
+services/enhancedDatabaseService.ts(487,5): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/enhancedGeminiService.ts(157,39): error TS2532: Object is possibly 'undefined'.
+services/frontendPerformanceService.ts(109,56): error TS18048: 'lastEntry' is possibly 'undefined'.
+services/frontendPerformanceService.ts(273,25): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/geminiService.ts(334,40): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/integrations/aiServiceIntegrations.ts(370,7): error TS2741: Property 'model' is missing in type '{ success: false; error: string; content: string; timestamp: Date; }' but required in type 'CustomAIGenerationResult'.
+services/integrations/analyticsIntegrations.ts(3,3): error TS2724: '"../../types"' has no exported member named 'FacebookAnalyticsCredentials'. Did you mean 'FacebookCredentials'?
+services/integrations/analyticsIntegrations.ts(4,3): error TS2724: '"../../types"' has no exported member named 'TwitterAnalyticsCredentials'. Did you mean 'TwitterCredentials'?
+services/integrationService.ts(66,9): error TS2345: Argument of type '{ name: string; type: IntegrationType; platform: string; status: "disconnected"; credentials: EncryptedCredentials; configuration: { webhooks?: WebhookConfig[]; ... 4 more ...; customFields?: { [key: string]: unknown; }; }; syncFrequency: SyncFrequency; isActive: true; }' is not assignable to parameter of type 'Omit<Integration, "id" | "user_id" | "created_at">'.
+  Type '{ name: string; type: IntegrationType; platform: string; status: "disconnected"; credentials: EncryptedCredentials; configuration: { webhooks?: WebhookConfig[] | undefined; ... 4 more ...; customFields?: { ...; } | undefined; }; syncFrequency: SyncFrequency; isActive: true; }' is missing the following properties from type 'Omit<Integration, "id" | "user_id" | "created_at">': userId, createdAt, updatedAt
+services/integrationService.ts(430,28): error TS2532: Object is possibly 'undefined'.
+services/integrationService.ts(619,20): error TS2532: Object is possibly 'undefined'.
+services/integrationService.ts(620,32): error TS2532: Object is possibly 'undefined'.
+services/integrationTestingService.ts(10,10): error TS2724: '"./integrations/socialMediaIntegrations"' has no exported member named 'socialMediaIntegrations'. Did you mean 'SocialMediaIntegrations'?
+services/integrationTestingService.ts(11,10): error TS2724: '"./integrations/analyticsIntegrations"' has no exported member named 'analyticsIntegrations'. Did you mean 'AnalyticsIntegrations'?
+services/integrationTestingService.ts(12,10): error TS2724: '"./integrations/aiServiceIntegrations"' has no exported member named 'aiServiceIntegrations'. Did you mean 'AIServiceIntegrations'?
+services/integrationTestingService.ts(292,9): error TS2322: Type '({ check: string | undefined; success: boolean; error: string | undefined; details: any; } | { check: string | undefined; success: boolean; error: string; details?: undefined; })[]' is not assignable to type 'HealthCheck[]'.
+  Type '{ check: string | undefined; success: boolean; error: string | undefined; details: any; } | { check: string | undefined; success: boolean; error: string; details?: undefined; }' is not assignable to type 'HealthCheck'.
+    Type '{ check: string | undefined; success: boolean; error: string | undefined; details: any; }' is not assignable to type 'HealthCheck'.
+      Types of property 'check' are incompatible.
+        Type 'string | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+services/integrationTestingService.ts(445,25): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/integrationTestingService.ts(482,31): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/monitoringService.ts(42,80): error TS2554: Expected 1-2 arguments, but got 3.
+services/monitoringService.ts(98,74): error TS2554: Expected 1-2 arguments, but got 4.
+services/monitoringService.ts(180,71): error TS2554: Expected 1-2 arguments, but got 3.
+services/monitoringService.ts(217,65): error TS2554: Expected 1-2 arguments, but got 4.
+services/monitoringService.ts(233,7): error TS2578: Unused '@ts-expect-error' directive.
+services/monitoringService.ts(235,9): error TS2578: Unused '@ts-expect-error' directive.
+services/monitoringService.ts(250,52): error TS2345: Argument of type 'null' is not assignable to parameter of type 'string'.
+services/monitoringService.ts(294,7): error TS2322: Type 'void' is not assignable to type 'IntegrationAlert'.
+services/monitoringService.ts(313,13): error TS2741: Property 'metadata' is missing in type '{ id: `${string}-${string}-${string}-${string}-${string}`; integrationId: string; level: "error" | "info" | "warn"; message: string; details: any; timestamp: Date; }' but required in type 'IntegrationLog'.
+services/monitoringService.ts(351,11): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'IntegrationMetrics'.
+services/monitoringService.ts(361,54): error TS2339: Property 'id' does not exist on type 'IntegrationMetrics'.
+services/monitoringService.ts(388,11): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/monitoringService.ts(389,30): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/monitoringService.ts(393,11): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/monitoringService.ts(394,25): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/monitoringService.ts(398,11): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/monitoringService.ts(399,38): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(251,14): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(269,14): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(287,14): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(402,57): error TS2532: Object is possibly 'undefined'.
+services/performanceMonitoringService.ts(430,53): error TS2554: Expected 1 arguments, but got 0.
+services/performanceMonitoringService.ts(454,68): error TS2345: Argument of type 'IntegrationMetrics | undefined' is not assignable to parameter of type 'IntegrationMetrics'.
+  Type 'undefined' is not assignable to type 'IntegrationMetrics'.
+services/performanceMonitoringService.ts(455,67): error TS2345: Argument of type 'IntegrationMetrics | undefined' is not assignable to parameter of type 'IntegrationMetrics'.
+  Type 'undefined' is not assignable to type 'IntegrationMetrics'.
+services/performanceMonitoringService.ts(456,65): error TS2345: Argument of type 'IntegrationMetrics | undefined' is not assignable to parameter of type 'IntegrationMetrics'.
+  Type 'undefined' is not assignable to type 'IntegrationMetrics'.
+services/performanceMonitoringService.ts(457,66): error TS2345: Argument of type 'IntegrationMetrics | undefined' is not assignable to parameter of type 'IntegrationMetrics'.
+  Type 'undefined' is not assignable to type 'IntegrationMetrics'.
+services/performanceMonitoringService.ts(634,16): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(638,10): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(642,16): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(646,10): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(654,71): error TS2345: Argument of type 'IntegrationMetrics | undefined' is not assignable to parameter of type 'IntegrationMetrics'.
+  Type 'undefined' is not assignable to type 'IntegrationMetrics'.
+services/performanceMonitoringService.ts(665,22): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(670,22): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(675,22): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(680,22): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(881,34): error TS18048: 'latest' is possibly 'undefined'.
+services/performanceMonitoringService.ts(882,30): error TS18048: 'latest' is possibly 'undefined'.
+services/performanceMonitoringService.ts(883,33): error TS18048: 'latest' is possibly 'undefined'.
+services/performanceMonitoringService.ts(962,11): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(968,11): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/performanceMonitoringService.ts(974,11): error TS18048: 'latestMetrics' is possibly 'undefined'.
+services/platforms/claudeClient.ts(230,50): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/platforms/openAIClient.ts(225,50): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/productionMonitoringService.ts(593,38): error TS2322: Type 'HealthMetrics | undefined' is not assignable to type 'HealthMetrics | null'.
+  Type 'undefined' is not assignable to type 'HealthMetrics | null'.
+services/productionMonitoringService.ts(897,7): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+services/productionMonitoringService.ts(898,7): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+services/productionMonitoringService.ts(906,29): error TS2532: Object is possibly 'undefined'.
+services/productionMonitoringService.ts(916,30): error TS2532: Object is possibly 'undefined'.
+services/productionMonitoringService.ts(1232,7): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+services/productionMonitoringService.ts(1238,5): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+services/productionQualityValidationService.ts(90,9): error TS2322: Type '{ type: string | undefined; passed: boolean; score: number; issues: string[]; recommendations: string[]; }[]' is not assignable to type '{ type: string; passed: boolean; score: number; issues: string[]; recommendations: string[]; }[]'.
+  Type '{ type: string | undefined; passed: boolean; score: number; issues: string[]; recommendations: string[]; }' is not assignable to type '{ type: string; passed: boolean; score: number; issues: string[]; recommendations: string[]; }'.
+    Types of property 'type' are incompatible.
+      Type 'string | undefined' is not assignable to type 'string'.
+        Type 'undefined' is not assignable to type 'string'.
+services/redisService.ts(77,9): error TS2322: Type 'Redis' is not assignable to type 'UpstashRedis | IORedis | null'.
+  Type 'Redis' is missing the following properties from type 'IORedis': scanStream, quit
+services/redisService.ts(112,15): error TS2322: Type 'Redis' is not assignable to type 'UpstashRedis | IORedis | null'.
+  Type 'Redis' is missing the following properties from type 'IORedis': scanStream, quit
+services/redisService.ts(123,15): error TS2322: Type 'Redis' is not assignable to type 'UpstashRedis | IORedis | null'.
+  Type 'Redis' is missing the following properties from type 'IORedis': scanStream, quit
+services/redisService.ts(140,11): error TS2322: Type 'Redis' is not assignable to type 'UpstashRedis | IORedis | null'.
+  Type 'Redis' is not assignable to type 'IORedis'.
+    Types of property 'del' are incompatible.
+      Type '{ (...args: [...keys: RedisKey[], callback: Callback<number>]): Promise<number>; (keys: RedisKey[], callback: Callback<number>): Promise<number>; (...args: RedisKey[]): Promise<...>; (keys: RedisKey[]): Promise<...>; }' is not assignable to type '(key: string | string[]) => Promise<number>'.
+        Types of parameters 'keys' and 'key' are incompatible.
+          Type '[key: string | string[]]' is not assignable to type '[...keys: RedisKey[], callback: Callback<number>]'.
+            Type at position 0 in source is not compatible with type at position 1 in target.
+              Type 'string | string[]' is not assignable to type 'Callback<number>'.
+                Type 'string' is not assignable to type 'Callback<number>'.
+services/redisService.ts(155,9): error TS2322: Type 'Redis' is not assignable to type 'UpstashRedis | IORedis | null'.
+  Type 'Redis' is not assignable to type 'IORedis'.
+    Types of property 'del' are incompatible.
+      Type '{ (...args: [...keys: RedisKey[], callback: Callback<number>]): Promise<number>; (keys: RedisKey[], callback: Callback<number>): Promise<number>; (...args: RedisKey[]): Promise<...>; (keys: RedisKey[]): Promise<...>; }' is not assignable to type '(key: string | string[]) => Promise<number>'.
+        Types of parameters 'keys' and 'key' are incompatible.
+          Type '[key: string | string[]]' is not assignable to type '[...keys: RedisKey[], callback: Callback<number>]'.
+            Type at position 0 in source is not compatible with type at position 1 in target.
+              Type 'string | string[]' is not assignable to type 'Callback<number>'.
+                Type 'string' is not assignable to type 'Callback<number>'.
+services/redisService.ts(261,27): error TS2339: Property 'set' does not exist on type 'UpstashRedis | IORedis'.
+  Property 'set' does not exist on type 'IORedis'.
+services/redisService.ts(264,27): error TS2339: Property 'setex' does not exist on type 'UpstashRedis | IORedis'.
+  Property 'setex' does not exist on type 'UpstashRedis'.
+services/redisService.ts(317,33): error TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
+services/redisService.ts(322,36): error TS2339: Property 'scanStream' does not exist on type 'UpstashRedis | IORedis'.
+  Property 'scanStream' does not exist on type 'UpstashRedis'.
+services/redisService.ts(338,33): error TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
+services/redisService.ts(378,29): error TS2339: Property 'quit' does not exist on type 'UpstashRedis | IORedis'.
+  Property 'quit' does not exist on type 'UpstashRedis'.
+services/reliableImageGenerationService.ts(361,9): error TS2353: Object literal may only specify known properties, and 'style' does not exist in type '{ imageStyle?: { stylePrompt: string; colorPalette: string[]; visualElements: string[]; brandAssets: { type: string; data: string; usage: string; }[]; } | undefined; platform?: string | undefined; aspectRatio?: string | undefined; numberOfImages?: number | undefined; }'.
+services/schedulingService.ts(100,14): error TS18048: 'currentPost' is possibly 'undefined'.
+services/schedulingService.ts(100,43): error TS18048: 'nextPost' is possibly 'undefined'.
+services/schedulingService.ts(102,32): error TS18048: 'nextPost' is possibly 'undefined'.
+services/schedulingService.ts(102,66): error TS18048: 'currentPost' is possibly 'undefined'.
+services/schedulingService.ts(108,22): error TS18048: 'currentPost' is possibly 'undefined'.
+services/schedulingService.ts(109,22): error TS18048: 'nextPost' is possibly 'undefined'.
+services/schedulingService.ts(110,47): error TS2345: Argument of type 'Post | undefined' is not assignable to parameter of type 'Post'.
+  Type 'undefined' is not assignable to type 'Post'.
+services/schedulingService.ts(118,35): error TS18048: 'currentPost' is possibly 'undefined'.
+services/schedulingService.ts(118,54): error TS18048: 'nextPost' is possibly 'undefined'.
+services/schedulingService.ts(120,22): error TS18048: 'currentPost' is possibly 'undefined'.
+services/schedulingService.ts(121,22): error TS18048: 'nextPost' is possibly 'undefined'.
+services/schedulingService.ts(122,47): error TS2345: Argument of type 'Post | undefined' is not assignable to parameter of type 'Post'.
+  Type 'undefined' is not assignable to type 'Post'.
+services/schedulingService.ts(130,35): error TS2345: Argument of type 'Post | undefined' is not assignable to parameter of type 'Post'.
+  Type 'undefined' is not assignable to type 'Post'.
+services/schedulingService.ts(132,22): error TS18048: 'currentPost' is possibly 'undefined'.
+services/schedulingService.ts(133,22): error TS18048: 'nextPost' is possibly 'undefined'.
+services/schedulingService.ts(134,47): error TS2345: Argument of type 'Post | undefined' is not assignable to parameter of type 'Post'.
+  Type 'undefined' is not assignable to type 'Post'.
+services/schedulingService.ts(275,13): error TS2322: Type 'Date | undefined' is not assignable to type 'Date'.
+  Type 'undefined' is not assignable to type 'Date'.
+services/schedulingService.ts(287,13): error TS2322: Type 'Date | undefined' is not assignable to type 'Date'.
+  Type 'undefined' is not assignable to type 'Date'.
+services/schedulingService.ts(297,31): error TS2532: Object is possibly 'undefined'.
+services/schedulingService.ts(335,66): error TS2345: Argument of type 'TimeSlot | undefined' is not assignable to parameter of type 'TimeSlot'.
+  Type 'undefined' is not assignable to type 'TimeSlot'.
+services/schedulingService.ts(342,25): error TS18048: 'bestTime' is possibly 'undefined'.
+services/schedulingService.ts(451,5): error TS2322: Type '{ time: string; dayOfWeek: number | undefined; engagementScore: number; confidence: number; }[]' is not assignable to type 'TimeSlot[]'.
+  Type '{ time: string; dayOfWeek: number | undefined; engagementScore: number; confidence: number; }' is not assignable to type 'TimeSlot'.
+    Types of property 'dayOfWeek' are incompatible.
+      Type 'number | undefined' is not assignable to type 'number'.
+        Type 'undefined' is not assignable to type 'number'.
+services/schedulingService.ts(455,20): error TS18048: 'hour' is possibly 'undefined'.
+services/schedulingService.ts(521,24): error TS18048: 'slot' is possibly 'undefined'.
+services/schedulingService.ts(522,23): error TS18048: 'slot' is possibly 'undefined'.
+services/schedulingService.ts(526,53): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+services/schedulingService.ts(530,18): error TS2322: Type 'Date | undefined' is not assignable to type 'Date'.
+  Type 'undefined' is not assignable to type 'Date'.
+services/schedulingService.ts(537,7): error TS2322: Type 'Date | undefined' is not assignable to type 'Date'.
+  Type 'undefined' is not assignable to type 'Date'.
+services/schedulingService.ts(546,33): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+utils/performanceUtils.ts(126,20): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+utils/performanceUtils.ts(320,44): error TS18048: 'chunk' is possibly 'undefined'.
+utils/performanceUtils.ts(370,25): error TS2345: Argument of type 'K | undefined' is not assignable to parameter of type 'K'.
+  'K' could be instantiated with an arbitrary type which could be unrelated to 'K | undefined'.

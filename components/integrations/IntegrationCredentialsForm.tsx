@@ -29,8 +29,16 @@ const IntegrationCredentialsForm: React.FC<IntegrationCredentialsFormProps> = ({
   }, [credentials]);
 
   // Define credential fields for each platform
-  const getCredentialFields = (platform: string, type: IntegrationType) => {
-    const fields: Record<string, any> = {
+  interface CredentialField {
+    key: string;
+    label: string;
+    type: 'text' | 'password';
+    required: boolean;
+    placeholder: string;
+  }
+
+  const getCredentialFields = (platform: string, type: IntegrationType): CredentialField[] => {
+    const fields: Record<string, CredentialField[]> = {
       // Social Media Platforms
       twitter: [
         {

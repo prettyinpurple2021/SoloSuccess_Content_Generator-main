@@ -233,7 +233,7 @@ export const VoiceCommands: React.FC<VoiceCommandsProps> = ({
         recognitionRef.current.interimResults = true;
         recognitionRef.current.lang = 'en-US';
 
-        recognitionRef.current.onresult = (event) => {
+        recognitionRef.current.onresult = (event: any) => {
           let finalTranscript = '';
           let interimTranscript = '';
 
@@ -257,7 +257,7 @@ export const VoiceCommands: React.FC<VoiceCommandsProps> = ({
           }
         };
 
-        recognitionRef.current.onerror = (event) => {
+        recognitionRef.current.onerror = (event: any) => {
           console.error('Speech recognition error:', event.error);
           setIsListening(false);
         };

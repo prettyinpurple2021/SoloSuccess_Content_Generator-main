@@ -276,7 +276,7 @@ export class AILearningService {
     ];
 
     const trendPromises = globalTrends.map(async (trend) => {
-      const personalRelevance = this.calculateTopicRelevance(trend, preferences);
+      const personalRelevance = this.calculateTopicRelevance(trend, preferences.preferredTopics);
       // Calculate real trend score based on social media engagement
       const trendScore = await this.calculateTrendScore(trend, userInterests);
 
@@ -511,8 +511,8 @@ export class AILearningService {
     return Math.min(1, engagementRate * 10); // Normalize to 0-1 scale
   }
 
-  private calculateTopicRelevance(topic: string, preferences: UserPreferences): number {
-    const matchingTopic = preferences.preferredTopics.find(
+  private calculateTopicRelevance(topic: string, preferredTopics: { topic: string; score: number }[]): number {
+    const matchingTopic = preferredTopics.find(
       (t) =>
         t.topic.toLowerCase().includes(topic.toLowerCase()) ||
         topic.toLowerCase().includes(t.topic.toLowerCase())
@@ -534,7 +534,7 @@ export class AILearningService {
       }
 
       // Fetch trending topics from all connected platforms
-      const trendingTopics = await socialPlatformService.getTrendingTopics(connectedPlatforms);
+      const trendingTopics = await socialPlatformService.fetchTrendingTopics(connectedPlatforms);
 
       // Find if our topic is trending
       const topicInTrends = trendingTopics.find(
@@ -546,12 +546,14 @@ export class AILearningService {
       if (topicInTrends) {
         // Topic is trending, calculate score based on engagement
         const engagementScore = topicInTrends.engagementRate || 0;
-        const relevanceScore = this.calculateTopicRelevance(topic, {
-          interests: userInterests,
-          contentTypes: [],
-          targetAudience: [],
-          preferredTopics: [],
-        });
+        
+        // Formatted interests for relevance calculation
+        const formattedInterests = userInterests.map(interest => ({
+          topic: interest,
+          score: 1.0
+        }));
+
+        const relevanceScore = this.calculateTopicRelevance(topic, formattedInterests);
 
         // Combine trending status with user relevance
         return Math.min(engagementScore * 0.7 + relevanceScore * 0.3, 1.0);
