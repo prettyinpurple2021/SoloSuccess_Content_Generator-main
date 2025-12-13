@@ -20,19 +20,21 @@ const projectId = import.meta.env.VITE_STACK_PROJECT_ID;
 const publishableKey = import.meta.env.VITE_STACK_PUBLISHABLE_CLIENT_KEY;
 
 if (!projectId || !publishableKey) {
-  console.error('Missing Stack Auth environment variables:', {
-    VITE_STACK_PROJECT_ID: !!projectId,
-    VITE_STACK_PUBLISHABLE_CLIENT_KEY: !!publishableKey,
-  });
-  throw new Error(
-    'Stack Auth configuration is missing. Please set VITE_STACK_PROJECT_ID and VITE_STACK_PUBLISHABLE_CLIENT_KEY in your environment variables.'
+  console.error(
+    '❌ Stack Auth configuration is missing. Please set VITE_STACK_PROJECT_ID and VITE_STACK_PUBLISHABLE_CLIENT_KEY in your environment variables.'
   );
+  // Do not throw here, as it crashes the entire app startup silently in some cases.
+  // Instead, we will let the StackClientApp use dummy values or handle it later.
 }
+
+// Ensure we have strings to prevent constructor error
+const safeProjectId = projectId || 'missing-project-id';
+const safePublishableKey = publishableKey || 'missing-publishable-key';
 
 // Initialize StackClientApp - React should be available now
 export const stackClientApp = new StackClientApp({
-  projectId,
-  publishableClientKey: publishableKey,
+  projectId: safeProjectId,
+  publishableClientKey: safePublishableKey,
   tokenStore: 'cookie',
   // redirectMethod is not needed when using BrowserRouter - Stack Auth handles navigation automatically
 });

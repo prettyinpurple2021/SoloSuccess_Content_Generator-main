@@ -11,6 +11,7 @@ import App from '../App';
  * Enhanced App wrapper with comprehensive error handling, loading states, and user feedback
  */
 const AppWithErrorHandling: React.FC = () => {
+  console.log('🛡️ AppWithErrorHandling: Rendering...');
   const { isOpen: isFeedbackOpen, openFeedback, closeFeedback, submitFeedback } = useFeedback();
   const { reportError } = useErrorReporting();
   const [globalError, setGlobalError] = useState<Error | null>(null);

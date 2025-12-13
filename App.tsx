@@ -222,6 +222,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // Handle Stack Auth user state
+    console.log('App: Stack user check', { stackUser, isAuthReady });
     if (stackUser !== undefined) {
       if (stackUser) {
         // Convert Stack user to our User type
@@ -244,6 +245,8 @@ const App: React.FC = () => {
         setUser(null);
         setIsAuthReady(true);
       }
+    } else {
+      console.log('⏳ Stack user is undefined (loading)');
     }
 
     // Blogger integration now handled through Integration Manager

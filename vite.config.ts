@@ -255,16 +255,6 @@ export default defineConfig(({ mode }) => {
 
             // Vendor chunks with better splitting
             if (id.includes('node_modules')) {
-              // Ensure React, ReactDOM, and scheduler are in the same chunk
-              // This is critical for React to initialize properly
-              if (
-                id.includes('react') ||
-                id.includes('react-dom') ||
-                id.includes('react/jsx-runtime') ||
-                id.includes('scheduler')
-              ) {
-                return 'vendor-react';
-              }
               if (id.includes('lucide-react') || id.includes('@stackframe/stack')) {
                 return 'vendor-ui';
               }
@@ -303,22 +293,6 @@ export default defineConfig(({ mode }) => {
             // AI services
             if (id.includes('geminiService') || id.includes('aiLearningService')) {
               return 'ai-services';
-            }
-
-            // Heavy components
-            if (
-              id.includes('IntegrationManager') ||
-              id.includes('RepurposingWorkflow') ||
-              id.includes('AnalyticsDashboard') ||
-              id.includes('PerformanceInsights') ||
-              id.includes('DragDropContentBuilder')
-            ) {
-              return 'components-heavy';
-            }
-
-            // Lazy components
-            if (id.includes('LazyComponents')) {
-              return 'lazy-components';
             }
           },
           // Optimize chunk sizes

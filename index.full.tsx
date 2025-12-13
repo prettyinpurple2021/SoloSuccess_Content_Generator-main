@@ -3,7 +3,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 
-console.log('🚀 index.tsx: Application starting...');
+console.log('🚀 index.tsx: Application starting (imports loaded)...');
 
 // Ensure React is available globally immediately
 if (typeof window !== 'undefined') {
