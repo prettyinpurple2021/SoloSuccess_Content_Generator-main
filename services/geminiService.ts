@@ -1,13 +1,22 @@
 import { GoogleGenAI, Type, GenerateContentResponse } from '@google/genai';
 
-if (!process.env.GEMINI_API_KEY) {
-  console.error('GEMINI_API_KEY environment variable not set.');
-}
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+// Helper to get initialized AI client safely
+const getAiClient = () => {
+  const apiKey =
+    process.env.GEMINI_API_KEY ||
+    (import.meta as any).env?.GEMINI_API_KEY ||
+    (import.meta as any).env?.VITE_GEMINI_API_KEY;
+  if (!apiKey) {
+    console.error('GEMINI_API_KEY environment variable not set.');
+    // Only throw when actually trying to use the client, to prevent app crash on startup
+    throw new Error('GEMINI_API_KEY is missing. Please check your .env file.');
+  }
+  return new GoogleGenAI({ apiKey });
+};
 
 export const generateTopic = async (): Promise<string> => {
   const prompt = `As a market researcher for solo entrepreneurs, identify the single most relevant and trending blog topic for the current market. Provide ONLY the topic title.`;
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -21,7 +30,7 @@ export const generateTopic = async (): Promise<string> => {
 
 export const generateIdeas = async (topic: string): Promise<string[]> => {
   const prompt = `Generate 5 unique, engaging blog post ideas for solo entrepreneurs on the topic: "${topic}".`;
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -49,7 +58,7 @@ export const generateIdeas = async (topic: string): Promise<string[]> => {
 
 export const generateBlogPost = async (idea: string): Promise<string> => {
   const prompt = `Write a detailed, engaging, 500-word blog post about "${idea}" for a solo entrepreneur. Use markdown for headings, bold text, and bullet points. End with a strong call to action.`;
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -67,7 +76,7 @@ export const generateTags = async (blogPost: string): Promise<string[]> => {
 Blog Post:
 ${blogPost}`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -99,7 +108,7 @@ export const generateHeadlines = async (blogPost: string): Promise<string[]> => 
 Blog Post:
 ${blogPost}`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -130,7 +139,7 @@ export const generateSummary = async (blogPost: string): Promise<string> => {
 
 Blog Post:
 ${blogPost}`;
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -173,7 +182,7 @@ export const generateSocialMediaPost = async (
 
   prompt += `\n\nBlog Post:\n${blogPost}`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -187,7 +196,7 @@ export const generateSocialMediaPost = async (
 
 export const generateImagePrompts = async (blogPost: string): Promise<string[]> => {
   const prompt = `Based on the blog post below, generate 3 distinct, detailed prompts for an AI image generator. The prompts should describe visual concepts that would effectively accompany the blog post.`;
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -288,7 +297,7 @@ export const generateImage = async (
     }
   }
 
-  const response = await ai.models.generateImages({
+  const response = await getAiClient().models.generateImages({
     model: 'imagen-4.0-generate-001',
     prompt: enhancedPrompt,
     config: {
@@ -376,7 +385,7 @@ Each prompt should:
 3. Match the overall style aesthetic
 4. Be suitable for the content topic`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -410,7 +419,7 @@ Each prompt should:
 };
 
 export const generateGenericContent = async (prompt: string): Promise<string> => {
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -432,7 +441,7 @@ export const rewriteToLength = async (
 
 Text:
 ${text}`;
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -619,7 +628,7 @@ ${blogPost}`;
       return 'Invalid format selected. Available formats: Video Script, Email Newsletter, LinkedIn Article, Podcast Script, Twitter Thread, Instagram Caption';
   }
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -667,7 +676,7 @@ export const generatePersonalizedContent = async (
 
   prompt += ` Use markdown for headings, bold text, and bullet points. End with a strong call to action.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
   });
@@ -693,7 +702,7 @@ export const analyzeBrandVoice = async (
 Content Samples:
 ${combinedContent}`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -753,7 +762,7 @@ export const generateAudienceInsights = async (
 
   prompt += ` Provide demographics, interests, pain points, content preferences, and engagement tips.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -842,7 +851,7 @@ export const generateSeriesContent = async (
 
   prompt += ` Create a cohesive 500-word blog post that fits the series narrative. Include a title, main content, connection to previous posts, and teaser for the next post.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -891,7 +900,7 @@ export const generateCampaignTheme = async (
     
     Provide a cohesive theme, description, key messages, content pillars, and platform-specific strategies.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -955,7 +964,7 @@ export const ensureContentContinuity = async (
     
     Evaluate continuity (0-100 score) and provide improvement suggestions. If score is below 70, provide revised content.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -1015,7 +1024,7 @@ export const generateHashtagSuggestions = async (
     Content:
     ${content}`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -1089,7 +1098,7 @@ export const analyzeTrendingTopics = async (
     Provide trending topics with trend scores (0-100), categories, industry relevance scores, and suggested content angles.
     Include integration suggestions and optimal timing recommendations.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -1170,7 +1179,7 @@ export const optimizeHashtagsForPlatform = async (
     
     Consider platform-specific limits, best practices, and performance optimization. Provide optimized hashtags, platform limits, performance predictions, and alternative suggestions.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -1294,7 +1303,7 @@ export const generateRepurposingTemplate = async (
     
     Provide a structured template with sections, guidelines, best practices, and customization options that content creators can use repeatedly.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -1400,7 +1409,7 @@ ${repurposedContent}
 
 Evaluate the repurposing quality (0-100 score) and provide specific optimization suggestions. If the score is below 75, provide an optimized version.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {
@@ -1472,7 +1481,7 @@ export const generateContentVariations = async (
     
     Generate different versions optimized for different ${variationTypes.join(', ')} approaches. Provide clear descriptions of each variation.`;
 
-  const response = await ai.models.generateContent({
+  const response = await getAiClient().models.generateContent({
     model: 'gemini-2.5-flash',
     contents: prompt,
     config: {

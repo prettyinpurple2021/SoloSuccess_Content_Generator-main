@@ -325,7 +325,7 @@ export default defineConfig(({ mode }) => {
         'react-dom',
         'react/jsx-runtime',
         'lucide-react',
-        // '@stackframe/react',
+        '@stackframe/react',
         // '@stackframe/stack',
         'framer-motion',
       ],
@@ -352,6 +352,7 @@ export default defineConfig(({ mode }) => {
       'process.env.VITE_STACK_PUBLISHABLE_CLIENT_KEY': JSON.stringify(
         env.VITE_STACK_PUBLISHABLE_CLIENT_KEY || ''
       ),
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
       // Note: API keys, database URLs, and secret keys should NOT be exposed to client
       // They should only be used server-side in API routes
     },
@@ -360,8 +361,6 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, '.'),
         // Alias server-only packages to empty stubs for client builds
         // API routes run server-side and will use the real packages from node_modules
-        postgres: path.resolve(__dirname, 'vite.server-stub.js'),
-        '@upstash/redis': path.resolve(__dirname, 'vite.server-stub.js'),
         ioredis: path.resolve(__dirname, 'vite.server-stub.js'),
       },
       // Ensure React is deduplicated - prevents multiple React instances
