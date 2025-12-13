@@ -340,8 +340,11 @@ export const generateImageVariations = async (
   ];
 
   for (let i = 0; i < Math.min(variationCount, variationPrompts.length); i++) {
-    const images = await generateImage(variationPrompts[i], { imageStyle, platform });
-    variations.push(...images);
+    const prompt = variationPrompts[i];
+    if (prompt) {
+      const images = await generateImage(prompt, { imageStyle, platform });
+      variations.push(...images);
+    }
   }
 
   // Simulate style consistency scoring (in a real implementation, this would use image analysis)
