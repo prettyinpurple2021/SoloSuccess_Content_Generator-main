@@ -325,8 +325,8 @@ export default defineConfig(({ mode }) => {
         'react-dom',
         'react/jsx-runtime',
         'lucide-react',
-        '@stackframe/react',
-        '@stackframe/stack',
+        // '@stackframe/react',
+        // '@stackframe/stack',
         'framer-motion',
       ],
       exclude: [
