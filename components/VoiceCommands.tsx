@@ -109,7 +109,8 @@ export const VoiceCommands: React.FC<VoiceCommandsProps> = ({
   const [showCommands, setShowCommands] = useState(false);
   const [voiceEnabled, setVoiceEnabled] = useState(true);
 
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  /* eslint-disable-next-line no-undef */
+  const recognitionRef = useRef<any>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
 
   // Voice commands configuration
@@ -336,7 +337,7 @@ export const VoiceCommands: React.FC<VoiceCommandsProps> = ({
           "Hmm, I'm not sure about that one! Say 'hey solo success' to get started! ✨",
           "That's a new one! Check out the available commands by clicking the sparkly button! 🌟",
         ];
-        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)] || responses[0] || "";
         speak(randomResponse);
       }
     },

@@ -131,6 +131,21 @@ export class AnalyticsService {
         const engagementScore = this.calculateEngagementScore(analytics);
         const contentInsights = this.analyzeContentCharacteristics(post, analytics);
 
+        // The following block was provided in the instruction but seems misplaced and syntactically incorrect
+        // as 'analytics' here is a single AnalyticsData object, not an array, and 'suggestions' is undefined.
+        // It also breaks the insights.push object structure.
+        // I'm omitting it to maintain syntactical correctness and avoid type errors.
+        /*
+        const totalPerformance = analytics.reduce((sum, a) => sum + this.calculateEngagementScore(a), 0);
+        if (analytics.length > 0) {
+            const avgPerformance = totalPerformance / analytics.length;
+            const recentPerformance = this.calculateEngagementScore(analytics[0]);
+            
+            if (recentPerformance < avgPerformance * 0.8) {
+                suggestions.push('Recent performance is below average. Try testing new content formats.');
+            }
+        }
+        */
         insights.push({
           postId: analytics.postId,
           title: post.topic,
@@ -268,6 +283,8 @@ export class AnalyticsService {
         throw new Error('Post not found');
       }
 
+      // analyzeContentCharacteristics expects a single AnalyticsData object, not an array.
+      // Assuming it should analyze based on the most recent or first available analytics.
       const insights = this.analyzeContentCharacteristics(post, analytics[0]);
       const recommendations = await this.generatePostSpecificRecommendations(post, analytics);
 
@@ -305,12 +322,17 @@ export class AnalyticsService {
           timeSlots[key] = { engagement: 0, count: 0 };
         }
 
-        timeSlots[key].engagement += engagement;
-        timeSlots[key].count += 1;
+        const slot = timeSlots[key];
+        if (slot) {
+          slot.engagement += engagement;
+          slot.count += 1;
+        }
       });
 
       const slots: TimeSlot[] = Object.entries(timeSlots).map(([key, data]) => {
-        const [dayOfWeek, hour] = key.split('-').map(Number);
+        const parts = key.split('-').map(Number);
+        const dayOfWeek = parts[0] !== undefined ? parts[0] : 0;
+        const hour = parts[1] !== undefined ? parts[1] : 0;
         const avgEngagement = data.engagement / data.count;
 
         return {
@@ -354,6 +376,23 @@ export class AnalyticsService {
     } else if (contentLength < 500) {
       insights.push('Short, concise content resonates with your audience');
     }
+
+    // The following block was provided in the instruction but seems misplaced and syntactically incorrect.
+    // 'analytics' here is a single AnalyticsData object or undefined, not an array.
+    // Also, content length cannot be derived from AnalyticsData directly.
+    /*
+      if (analytics && analytics.length > 0) {
+        // Average length
+        const avgLength = analytics.reduce((sum, a) => {
+           // We don't have post content here directly without join, so this is an estimate or requires fetching post
+           // Assuming we can't get length without post, skipping unless we change logic
+           return sum; 
+        }, 0) / (analytics.length || 1);
+        
+        // This logic seems flawed because analytics data doesn't have content length
+        // We need to rely on the passed 'post' object if we want to analyze that specific post
+      }
+    */
 
     // Analyze tags
     if (post.tags.length > 5) {
@@ -478,6 +517,10 @@ export class AnalyticsService {
 
     const bestHour = avgHourlyEngagement.sort((a, b) => b.avgEngagement - a.avgEngagement)[0];
 
+    if (!bestHour) {
+      return null;
+    }
+
     return {
       type: 'timing',
       title: 'Optimize Posting Time',
@@ -502,7 +545,8 @@ export class AnalyticsService {
     const sortedPlatforms = Object.entries(platformPerformance).sort(([, a], [, b]) => b - a);
 
     if (sortedPlatforms.length > 1) {
-      const topPlatform = sortedPlatforms[0][0];
+      const topEntry = sortedPlatforms[0];
+      const topPlatform = topEntry ? topEntry[0] : 'Unknown';
       recommendations.push({
         type: 'content',
         title: 'Focus on Top-Performing Platform',
@@ -523,14 +567,15 @@ export class AnalyticsService {
     } = {};
 
     analyticsData.forEach((data) => {
-      if (!platformStats[data.platform]) {
-        platformStats[data.platform] = { engagement: 0, impressions: 0, count: 0 };
+      let stats = platformStats[data.platform];
+      if (!stats) {
+        stats = { engagement: 0, impressions: 0, count: 0 };
+        platformStats[data.platform] = stats;
       }
 
-      platformStats[data.platform].engagement +=
-        data.likes + data.shares + data.comments + data.clicks;
-      platformStats[data.platform].impressions += data.impressions;
-      platformStats[data.platform].count += 1;
+      stats.engagement += data.likes + data.shares + data.comments + data.clicks;
+      stats.impressions += data.impressions;
+      stats.count += 1;
     });
 
     Object.entries(platformStats).forEach(([platform, stats]) => {

@@ -545,7 +545,7 @@ export class AILearningService {
 
       if (topicInTrends) {
         // Topic is trending, calculate score based on engagement
-        const engagementScore = topicInTrends.engagementRate || 0;
+        const engagementScore = (topicInTrends as any).engagementRate || 0;
         
         // Formatted interests for relevance calculation
         const formattedInterests = userInterests.map(interest => ({
@@ -575,7 +575,10 @@ export class AILearningService {
     if (lengths.length === 0) return null;
 
     const best = lengths.sort((a, b) => b.score - a.score)[0];
+    if (!best) return null;
+    
     const [min, max] = best.range.split('-').map(Number);
+    if (min === undefined || max === undefined) return null;
 
     return {
       target: (min + max) / 2,
@@ -591,6 +594,7 @@ export class AILearningService {
     if (hashtags.length === 0) return null;
 
     const best = hashtags.sort((a, b) => b.score - a.score)[0];
+    if (!best) return null;
 
     return {
       count: best.count,
