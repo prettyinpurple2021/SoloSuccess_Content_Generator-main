@@ -481,7 +481,7 @@ const App: React.FC = () => {
     setIsLoading((prev) => ({ ...prev, [key]: true }));
     setErrorMessage('');
     try {
-      const tone = socialMediaTones[platform] || TONES[0];
+      const tone = socialMediaTones[platform] || TONES[0] || 'Professional';
 
       // Enhanced social media generation with personalization
       // personalization used via generatePersonalizedContent elsewhere
@@ -516,7 +516,7 @@ const App: React.FC = () => {
 
     const gemini = geminiService as unknown as GeminiSocialClient;
     const promises = PLATFORMS.map(async (platform) => {
-      const tone = socialMediaTones[platform] || TONES[0];
+      const tone = socialMediaTones[platform] || TONES[0] || 'Professional';
       const config = PLATFORM_CONFIG[platform];
       const length = config?.charLimit || 200;
       try {
@@ -1407,6 +1407,7 @@ const App: React.FC = () => {
                     <div className="space-y-4">
                       {PLATFORMS.map((platform) => {
                         const config = PLATFORM_CONFIG[platform];
+                        if (!config) return null;
                         const Icon = config.icon;
                         const post = socialMediaPosts[platform] || '';
                         const platformLoadingKey = `social-${platform}`;
@@ -1624,7 +1625,10 @@ const App: React.FC = () => {
                       </button>
                       {selectedImageStyle && imagePrompts.length > 0 && (
                         <button
-                          onClick={() => handleGenerateImageVariations(imagePrompts[0])}
+                          onClick={() => {
+                            const prompt = imagePrompts[0];
+                            if (prompt) handleGenerateImageVariations(prompt);
+                          }}
                           disabled={isLoading.variations}
                           className="bg-secondary/80 hover:bg-secondary text-white font-bold py-2 px-4 rounded-lg disabled:opacity-50"
                         >

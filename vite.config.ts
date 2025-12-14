@@ -157,7 +157,6 @@ const excludeServerModules = () => {
           originalId.startsWith('/services/redisService')
         ) {
           // Return a stub that exports empty objects/functions to prevent runtime errors
-          // This allows the code to compile but will fail gracefully if actually called
           return `
             // Server-only module stub - this should never be called in client-side code
             const error = () => {
@@ -345,16 +344,16 @@ export default defineConfig(({ mode }) => {
       drop: mode === 'production' ? ['console', 'debugger'] : [],
     },
     define: {
+      // ✅ FIX: Define global to prevent the "Uncaught ReferenceError" crash
+      global: 'window',
+
       // Only expose client-safe environment variables
-      // Server-side secrets should NEVER be exposed to the client
       'process.env.GOOGLE_CLIENT_ID': JSON.stringify(env.GOOGLE_CLIENT_ID || ''),
       'process.env.VITE_STACK_PROJECT_ID': JSON.stringify(env.VITE_STACK_PROJECT_ID || ''),
       'process.env.VITE_STACK_PUBLISHABLE_CLIENT_KEY': JSON.stringify(
         env.VITE_STACK_PUBLISHABLE_CLIENT_KEY || ''
       ),
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || ''),
-      // Note: API keys, database URLs, and secret keys should NOT be exposed to client
-      // They should only be used server-side in API routes
+      // GEMINI_API_KEY removed for security
     },
     resolve: {
       alias: {
@@ -364,7 +363,6 @@ export default defineConfig(({ mode }) => {
         ioredis: path.resolve(__dirname, 'vite.server-stub.js'),
       },
       // Ensure React is deduplicated - prevents multiple React instances
-      // This is CRITICAL to prevent "Cannot set properties of undefined (setting 'Children')" errors
       dedupe: ['react', 'react-dom', 'react/jsx-runtime'],
     },
   };
